@@ -1,0 +1,27 @@
+{{#if loggedIn}}
+<section class="cd">
+    <img src="/images/{{cd.filename}}" alt="{{cd.description}}">
+    <div class="cd-details">
+        <h3>{{cd.title}}</h3>
+        <p>By: {{cd.artist}}</p>
+        <p>Description: {{cd.description}}</p>
+    </div>
+</section>
+{{else}}
+<a href="/login"> Log in to view this page. </a>
+{{/if}}
+
+{{!-- <div class="text-center">
+    <h2>{{name}}</h2>
+    <p>{{{get_img}}}</p>
+    <p>{{description}}</p>
+    <p>{{price}}</p>
+    <p> Seller: {{user.name}} </p>
+    <p>
+        <span for="img" aria-label="money"></span>
+        <span class="dollar-amount">{{format_amount price}}</span>
+    </p>
+    <p>
+        <button class="btn btn-primary"> Purchase </button>
+    </p>
+</div> --}}
