@@ -1,6 +1,15 @@
 const dayjs = require('dayjs');
 
 module.exports = {
+  formatTime: (date) => {
+    return date.toLocaleTimeString();
+  },
+  formatDate: (date) => {
+    return dayjs(new Date(date)).format('ddd, MMM D, YYYY [@] h:mm:ss a');
+    // `${new Date(date).getMonth() + 1}/${new Date(date).getDate()}/${
+    //   new Date(date).getFullYear() + 5
+    // }`;
+  },
   getEmoji: () => {
     const randomNumber = Math.random();
     // Return a random emoji
