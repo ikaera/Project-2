@@ -1,4 +1,4 @@
-# Project-2
+# Project-2 P2P Vinyl & CD Resale
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -14,6 +14,19 @@ Provide a short description explaining the what, why, and how of your project. U
 - What did you learn?
 
 ### User Story
+
+AS A user who owns albums on CD or vinyl,
+I WANT a P2P online store dedicated to music,
+SO THAT I can buy new vinyls and rare editions no longer for sale;
+AS A user who owns albums on CD or vinyl,
+I WANT a P2P online store dedicated to music,
+SO THAT I can sell albums for a profit to other fans.
+
+<!-- A website where users can list physical music, such as CDs or Vinyl Records, for sale to other users. Users can browse the site by the user (to see all listings from a user), by category (to see all CD listings), etc., select items they're interested in to place into a shopping cart and purchase the items in their shopping cart.
+
+If we can add a search bar to bring up listings that match the search terms (so someone can search Parliament or Funkadelic and get a list of CDs or Vinyl available for purchase from those artists) that would be awesome
+
+We will need to add some kind of selection or add-to-cart button on every listing when generating it through the handlebar -->
 
 ## Table of Contents (Optional)
 
