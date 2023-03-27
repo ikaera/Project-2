@@ -37,6 +37,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//added 41-46 
+// app.engine('handlebars', handlebars({
+//     layoutsDir: __dirname + '/views/layouts'
+// }));
+// app.get('/', (req, res) => {
+//     res.render('homepage', {layout: 'main' });
+// });
+
 app.use(routes);
 sequelize.sync({ force: false}).then(() => {
     app.listen(PORT, () => console.log('NOW LISTENING'));
