@@ -5,17 +5,19 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const dbListingData = await Listing.findAll({
-      include: [
-        {
-          model: Listing,
-          attributes: ['coverart', 'description', 'price'],
-        },
-      ],
+      // include: [
+      //   {
+      //     model: Listing,
+      //     attributes: ['coverart', 'description', 'price'],
+      //   },
+      // ],
     });
 
     const listings = dbListingData.map((listing) =>
       listing.get({ plain: true })
     );
+
+    console.log("list", listings)
 
     res.render('homepage', {
       listings,
@@ -75,6 +77,28 @@ router.get('/listing/:id', withAuth, async (req, res) => {
     }
   }
 });
+
+router.get('/sell', async (req, res) => {
+  // 
+  const dbListingData = await Listing.findAll({
+    // include: [
+    //   {
+    //     model: Listing,
+    //     attributes: ['coverart', 'description', 'price'],
+    //   },
+    // ],
+  });
+
+  const listings = dbListingData.map((listing) =>
+    listing.get({ plain: true })
+  );
+
+  res.render('listing', {
+    vinyl: true,
+    vinyls: listings,
+    logged_in: req.session.logged_in,
+  })
+})
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
