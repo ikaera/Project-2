@@ -74,7 +74,18 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 If you followed tutorials, include links to those here as well. -->
 
 ## Technology Used
-
+    - HTML and CSS
+    - JavaScript,
+    - Node.js
+    - Handlebars.js => express-handlebars package
+    - MySQL2 and Sequelize packages
+    - dotenv package to use environment variables
+    - bcrypt package to hash passwords
+    - express-session and connect-session-sequelize packages to add authentication 
+    - bootstrap
+    - font-awesome
+    - Express-Visitor-Counter
+    - Multer (a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency).
 
 ## License
 
