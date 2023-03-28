@@ -1,4 +1,6 @@
-{{#each listing as |vinyl| }}
+{{!-- using #with to provide specificity and target the particular format --}}
+{{#with listing.format as | vinyl |}}
+{{#each listing as | vinyl |}}
 <section class="vinyl">
     <img src="/img/{{vinyl.filename}}" alt="{{vinyl.description}}">
     <div class="vinyl-details">
@@ -10,3 +12,4 @@
     </div>
 </section>
 {{/each}}
+{{/with}}

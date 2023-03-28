@@ -14,7 +14,8 @@
             </div>
         </form>
     </div>
-    
+
+{{!-- I think the issue this is running into is that it needs some #with parameter or a lookup or a @root parameter added so that it can specifically generate listings where the user_id is equal to the req.session.user_id, and not just populate 100% of the listings. if we can get this working, that will make the saved items and cart way easier --}} 
 {{#if listings.length}}
 <div class="col-md-6 listing-list">
     <h3>Active Listings:</h3>

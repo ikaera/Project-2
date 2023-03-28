@@ -1,3 +1,5 @@
+{{!-- using #with to provide specificity and target the particular format --}}
+{{#with listing.format as | CD |}}
 {{#each listing as | cd |}}
 <section class="cd">
     <img src="/img/{{cd.filename}}" alt="{{cd.description}}">
@@ -10,3 +12,4 @@
     </div>
 </section>
 {{/each}}
+{{/with}}
