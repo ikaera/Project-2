@@ -284,6 +284,15 @@ textarea.input {
     background-color: white;
 }
 
+.disc-listing {
+    background-color: #333;
+    color: white;
+}
+
+.font-white {
+    color: white;
+
+}
 @media only screen and (max-width: 991px) {
     .header-ctn .menu-toggle {
         display: inline-block;

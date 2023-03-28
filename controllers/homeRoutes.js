@@ -104,6 +104,10 @@ router.get('/profile', withAuth, async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect('/login');
     return;
+  } else {
+    res.render('profile', {
+      logged_in: req.session.logged_in,
+    })
   }
 });
 
