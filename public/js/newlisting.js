@@ -15,13 +15,19 @@ const newListingHandler = async (event) => {
     const listingGenre = document.getElementById('listing-genre').value.trim();
 
     if (!listingArtist || !listingAlbum || !listingFormat || !listingDesc || !listingDate || !listingCover || !listingCondition || !listingLabel || !listingPrice || !listingGenre) {
+        /* improving the formatting so that the status is shown as an h2 within a form-group div, following the submit button*/
+        const listingStatusEl = document.createElement('div');
+        listingStatusEl.classList.add('form-group');
+        listingStatusEl.classList.add('status-div');
+        document.querySelector('status-div').style.display = 'flex';
+        newListingForm.appendChild(listingStatusEl);
         const listingStatus = document.createElement('h2');
-        listingStatus.classList.add('listing-status');
-        document.querySelector('listing-status').style.display = 'flex';
+        listingStatus.classList.add('listing-status')
         listingStatus.textContent = 'All fields must be filled!';
         listingStatus.style.color = 'red';
+        listingStatusEl.appendChild(listingStatus);
         setTimeout(() => {
-            document.querySelector('listing-status').style.display = 'none';
+            document.querySelector('status-div').style.display = 'none';
         }, 3000);
     } else {
         const response = await fetch('/api/listings', {
@@ -44,11 +50,17 @@ const newListingHandler = async (event) => {
         });
 
         if (response.ok) {
+            /* adjusting to the improved formatting above */
+            const listingStatusEl = document.createElement('div');
+            listingStatusEl.classList.add('form-group');
+            listingStatusEl.classList.add('status-div');
+            document.querySelector('status-div').style.display = 'flex';
+            newListingForm.appendChild(listingStatusEl);
             const listingStatus = document.createElement('h2');
-            listingStatus.classList.add('listing-status');
-            document.querySelector('listing-status').style.display = 'flex';
+            listingStatus.classList.add('listing-status')
             listingStatus.textContent = 'Listing Added Successfully!';
             listingStatus.style.color = 'green';
+            listingStatusEl.appendChild(listingStatus);
             setTimeout(() => {
                 document.location.replace('/profile');
             }, 3000);
