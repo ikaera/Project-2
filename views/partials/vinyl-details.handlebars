@@ -1,10 +1,12 @@
-<section class="card">
-    <a href="/vinyl/{{id}}">
-        <header>{{title}}</header>
-        
-        <div class="card-body">
-            <img src="/img/{{filename}}" alt="{{description}}">
-            <p> Artist: {{artist}}</p>
-        </div>
-    </a>
+{{#each listing as |vinyl| }}
+<section class="vinyl">
+    <img src="/img/{{vinyl.filename}}" alt="{{vinyl.description}}">
+    <div class="vinyl-details">
+        <h3>{{vinyl.title}}</h3>
+        <p>By: {{vinyl.artist}}</p>
+        <p>Genre: {{vinyl.genre}}</p>
+        <p>Description: {{vinyl.description}}</p>
+        <p>Price: {{vinyl.price}}</p>
+    </div>
 </section>
+{{/each}}

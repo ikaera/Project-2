@@ -1,0 +1,67 @@
+{{#if vinyl}}
+<form class="form new-listing-form">
+    <div class="form-group">
+        <label for="vinyl-title"> Vinyl Title: </label>
+        <input class="form-input" type="text" id="vinyl-name" name="vinyl-name" />
+    </div>
+
+    <div class="form-group">
+        <label for="vinyl-artist"> Artist: </label>
+        <input class="form-input" type="text" id="vinyl-artist" name="vinyl-artist" />
+    </div>
+
+    <div class="form-group">
+        <label for="vinyl-genre"> Genre: </label>
+        <input class="form-input" type="text" id="vinyl-genre" name="vinyl-genre" />
+    </div>
+
+    <div class="form-group">
+        <label for="vinyl-desc"> Description: </label>
+        <textarea class="form-input" id="vinyl-desc" name="vinyl-desc"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="vinyl-price"> Price:($) </label>
+        <input class="form-input" type="number" id="vinyl-price" name="vinyl-price" />
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary"> Create Listing </button>
+    </div>
+
+</form>
+
+{{else}}
+
+<form class="form new-listing-form">
+    <div class="form-group">
+        <label for="cd-title"> CD Title: </label>
+        <input class="form-input" type="text" id="cd-name" name="cd-name" />
+    </div>
+
+    <div class="form-group">
+        <label for="cd-artist"> Artist: </label>
+        <input class="form-input" type="text" id="cd-artist" name="cd-artist" />
+    </div>
+
+    <div class="form-group">
+        <label for="cd-genre"> Genre: </label>
+        <input class="form-input" type="text" id="cd-genre" name="cd-genre" />
+    </div>
+
+    <div class="form-group">
+        <label for="cd-desc"> Description: </label>
+        <textarea class="form-input" id="cd-desc" name="cd-desc"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="cd-price"> Price:($) </label>
+        <input class="form-input" type="number" id="cd-price" name="cd-price" />
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary"> Create Listing </button>
+    </div>
+
+</form>
+{{/if}}
