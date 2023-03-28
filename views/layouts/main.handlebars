@@ -20,11 +20,11 @@
                 <ul class="header-links pull-right">
                     {{#if logged_in}}
                     <li><a href="/profile">Profile</a></li>
-                    <button class="no-button" id="logout">Logout</button>
+                    <li><a href="/logout"><i class="fa fa-user-o"></i>Logout</a></li>
                     {{else}}
                     <li><a href="/login"><i class="fa fa-user-o"></i>Login</a></li>
+                    <li><a href="/login"><i class="fa fa-user-o"></i>Signup</a></li>
                     {{/if}}
-                    <li><a href=""><i class="fa fa-user-o"></i>SignUp</a></li>
                 </ul>
             </div>
         </div>
@@ -56,7 +56,7 @@
                     <div class="col-md-3 cleared">
                         <div class="header-acc">
                             <div>
-                                <a href="#">
+                                <a href="/myitems">
                                     <i class="fa fa-heart-o"></i>
                                     <span>Saved</span>
                                     <div class="quantity">{{item.id.count}}</div>
@@ -90,9 +90,10 @@
             <div id="responsive-nav">
                 <ul class="main-nav nav navbar-nav">
                     <li class="active"><a href="/">Home</a></li>
-                    <li><a href="#">Vinyl</a></li>
-                    <li><a href="#">CD</a></li>
-                    <li><a href="#">Sell</a></li>
+                    <li><a href="/vinyls">Vinyl</a></li>
+                    <li><a href="/cd">CD</a></li>
+                    <li><a href="/cassettes">Cassettes</a></li>
+                    <li><a href="/listing">Sell</a></li>
                 </ul>
             </div>
         </div>
@@ -127,10 +128,11 @@
               <div class='footer'>
                 <h3 class='footer-title'>Categories</h3>
                 <ul class='footer-links'>
-                  <li><a href='#'>All items</a></li>
-                  <li><a href='#'>Only Vinlys</a></li>
-                  <li><a href='#'>Only CDs</a></li>
-                  <li><a href='#'>Sell disc</a></li>
+                  <li><a href='/'>All items</a></li>
+                  <li><a href='/vinyls'>Only Vinlys</a></li>
+                  <li><a href='/cd'>Only CDs</a></li>
+                  <li><a href="/cassettes">Only Cassettes</a></li>
+                  <li><a href='/listing'>Sell disc</a></li>
                 </ul>
               </div>
             </div>
@@ -152,9 +154,9 @@
               <div class='footer'>
                 <h3 class='footer-title'>Services</h3>
                 <ul class='footer-links'>
-                  <li><a href='#'>My Account</a></li>
-                  <li><a href='#'>My Cart</a></li>
-                  <li><a href='#'>Saved items</a></li>
+                  <li><a href='/profile'>My Account</a></li>
+                  <li><a href='/cart'>My Cart</a></li>
+                  <li><a href='/myitems'>Saved items</a></li>
                   <li><a href='#'>FAQs</a></li>
                 </ul>
               </div>

@@ -1,10 +1,15 @@
-<section class="card">
-    <a href="/cd/{{id}}">
-        <header>{{title}}</header>
-        
-        <div class="card-body">
-            <img src="/img/{{filename}}" alt="{{description}}">
-            <p> Artist: {{artist}}</p>
-        </div>
-    </a>
+{{!-- using #with to provide specificity and target the particular format --}}
+{{#with listing.format as | CD |}}
+{{#each listing as | cd |}}
+<section class="cd">
+    <img src="/img/{{cd.filename}}" alt="{{cd.description}}">
+    <div class="cd-details">
+        <h3>{{cd.title}}</h3>
+        <p>By: {{cd.artist}}</p>
+        <p>Genre: {{cd.genre}}</p>
+        <p>Description: {{cd.description}}</p>
+        <p>Price: {{cd.price}}</p>
+    </div>
 </section>
+{{/each}}
+{{/with}}

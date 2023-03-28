@@ -1,0 +1,15 @@
+{{!-- using #with to provide specificity and target the particular format --}}
+{{#with listing.format as | cassette |}}
+{{#each listing as | cassette |}}
+<section class="cassette">
+    <img src="/img/{{cassette.filename}}" alt="{{cassette.description}}">
+    <div class="cassette-details">
+        <h3>{{cassette.title}}</h3>
+        <p>By: {{cassette.artist}}</p>
+        <p>Genre: {{cassette.genre}}</p>
+        <p>Description: {{cassette.description}}</p>
+        <p>Price: {{cassette.price}}</p>
+    </div>
+</section>
+{{/each}}
+{{/with}}
