@@ -6,94 +6,31 @@
 <div class="row mt-4 disc-listing">
     <div class="col-md-6 ">
         <h3 class="font-white">Create New Listing</h3>
-
-        <form class="form new-listing">
-            <div class="form-group">
-                <label for="disc-title">Disc Title:</label>
-                <input class="form-input" type="text" id="disc-title" name="disc-title"/>
-            </div>
-        </form>
+        {{!-- present the full listing form! --}}
+        {{> listing-details}}
     </div>
 
-{{!-- I think the issue this is running into is that it needs some #with parameter or a lookup or a @root parameter added so that it can specifically generate listings where the user_id is equal to the req.session.user_id, and not just populate 100% of the listings. if we can get this working, that will make the saved items and cart way easier --}} 
-{{!-- {{#if listings.length}}
-<div class="col-md-6 listing-list">
-    <h3>Active Listings:</h3>
+{{!-- #ifEq does not work, would need separate npm package I can't find
+#with does not work how I thought it did, need to adjust all other pathways --}}
 
-    {{#each listings as |disc|}}
-    <div class="row mb-4">
-        <h4><a href="/listings/{{disc.id}}">{{disc.title}}</a></h4>
-    </div>
-    <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{disc.id}}"> Delete Listing</button>
-    </div>
-    {{/each}}
-</div>
-{{/if}}
-</div> --}}
-
-{{#ifEq listing.user_id req.session.user_id}}
-    {{#with listing.format as | CD |}}
-        <h2>Your CDs</h2>
-        {{#each listing as | cd |}}
-            <section class="cd">
-                <img src="{{cd.cover_art}}" alt="Cover Art for {{cd.album_title}} by {{cd.artist}}">
-                <div class="cd-details">
-                    <h3>{{cd.album_title}}</h3>
-                    <p>By: {{cd.artist}}</p>
-                    <p>Genre: {{cd.genre}}</p>
-                    <p>Format: CD</p>
-                    <p>Condition: {{cd.condition}}</p>
-                    <p>Description: {{cd.description}}</p>
-                    <p>Price: {{cd.price}}</p>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn btn-sm btn-danger" data-id="{{cd.id}}"> Delete Listing</button>
-                </div>
-            </section>
-        {{/each}}
-    {{/with}}
-    {{#with listing.format as | vinyl |}}
-        <h2>Your Vinyl</h2>
-        {{#each listing as | vinyl |}}
-            <section class="vinyl">
-                <img src="{{vinyl.cover_art}}" alt="Cover Art for {{vinyl.album_title}} by {{vinyl.artist}}">
-                <div class="vinyl-details">
-                    <h3>{{vinyl.album_title}}</h3>
-                    <p>By: {{vinyl.artist}}</p>
-                    <p>Genre: {{vinyl.genre}}</p>
-                    <p>Format: Vinyl</p>
-                    <p>Condition: {{vinyl.condition}}</p>
-                    <p>Description: {{vinyl.description}}</p>
-                    <p>Price: {{vinyl.price}}</p>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn btn-sm btn-danger" data-id="{{vinyl.id}}"> Delete Listing</button>
-                </div>
-            </section>
-        {{/each}}
-    {{/with}}
-    {{#with listing.format as | cassette |}}
-        <h2>Your Cassettes</h2>
-        {{#each listing as | cassette |}}
-            <section class="cassette">
-                <img src="{{cassette.cover_art}}" alt="Cover Art for {{cassette.album_title}} by {{cassette.artist}}">
-                <div class="cassette-details">
-                    <h3>{{cassette.album_title}}</h3>
-                    <p>By: {{cassette.artist}}</p>
-                    <p>Genre: {{cassette.genre}}</p>
-                    <p>Format: Cassette</p>
-                    <p>Condition: {{cassette.condition}}</p>
-                    <p>Description: {{cassette.description}}</p>
-                    <p>Price: {{cassette.price}}</p>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn btn-sm btn-danger" data-id="{{cassette.id}}"> Delete Listing</button>
-                </div>
-            </section>
-        {{/each}}
-    {{/with}}
-{{/ifEq}}
-
+{{#each listingData as | listing |}}
+    <h2>Your Listings</h2>
+    <section class="listing">
+        <img src="{{listing.cover_art}}" alt="Cover Art for {{listing.album_title}} by {{listing.artist}}">
+        <div class="listing-details">
+            <h3>{{listing.album_title}}</h3>
+            <p>By: {{listing.artist}}</p>
+            <p>Genre: {{listing.genre}}</p>
+            <p>Format: {{listing.format}}</p>
+            <p>Condition: {{listing.condition}}</p>
+            <p>Description: {{listing.description}}</p>
+            <p>Price: {{listing.price}}</p>
+        </div>
+        {{!-- if we get the time this would be a great place to include an Update Listing --}}
+        <div class="col-md-4">
+            <button class="btn btn-sm btn-danger" data-id="{{listing.id}}"> Delete Listing</button>
+        </div>
+    </section>
+{{/each}}
 
 <script src="/js/profile.js"></script>

@@ -119,51 +119,54 @@ router.get('/listing/:id', withAuth, async (req, res) => {
   }
 });
 
-router.get('/sell', async (req, res) => {
-  //
-  const dbListingData = await Listing.findAll({
-    // include: [
-    //   {
-    //     model: Listing,
-    //     attributes: ['coverart', 'description', 'price'],
-    //   },
-    // ],
-  });
-
-  const listings = dbListingData.map((listing) => listing.get({ plain: true }));
+router.get('/listing', withAuth, (req, res) => {
 
   res.render('listing', {
-    vinyl: true,
-    vinyls: listings,
     logged_in: req.session.logged_in,
   });
 });
 
-// router.get('/profile', withAuth, async (req, res) => {
-//   try {
-//     const userData = await User.findbyPk(req.session.user_id, {
-//       attributes: { exclude: ['password']},
-//       include: [{model: Listing }],
-//     });
-//     const user = userData.get({ plain: true});
+router.get('/vinyls', withAuth, (req, res) => {
 
-//     res.render('profile', {
-//       ...user,
-//       logged_in: req.session.logged_in,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+  res.render('vinyls', {
+    logged_in: req.session.logged_in,
+  });
+});
+
+router.get('/cds', withAuth, (req, res) => {
+
+  res.render('cds', {
+    logged_in: req.session.logged_in,
+  });
+});
+
+router.get('/cassettes', withAuth, (req, res) => {
+  
+  res.render('cassettes', {
+    logged_in: req.session.logged_in,
+  });
+});
 
 router.get('/profile', withAuth, async (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-    return;
-  } else {
+ 
+  try {
+    const userListingData = await Listing.findAll({
+      where: {
+        user_id: req.session.user_id,
+      }
+    });
+
+    const listingData = userListingData.map((listing) => listing.get({ plain: true }));
+    console.log(listingData);
+
     res.render('profile', {
+      /* this has to be matched in the handlebar references!!! */
+      listingData,
       logged_in: req.session.logged_in,
-    })
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
