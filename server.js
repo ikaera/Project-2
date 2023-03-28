@@ -4,6 +4,7 @@ const session = require('express-session');
 const path = require('path');
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
+const expressVisitorCounter = require('express-visitor-counter');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -12,6 +13,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({ helpers });
+
+const counters = {};
 
 const sess = {
     secret: 'Super secret secret',
@@ -27,6 +30,22 @@ const sess = {
         db: sequelize
     })
 };
+
+(async () => {
+  const app = express();
+  app.enable('trust proxy');
+  app.use(
+    expressSession({ secret: 'secret', resave: false, saveUninitialized: true })
+  );
+  app.use(
+    expressVisitorCounter({
+      hook: (counterId) =>
+        (counters[counterId] = (counters[counterId] || 0) + 1),
+    })
+  );
+  // app.get('/', (req, res, next) => res.json(counters));
+  // app.listen(8080);
+})();
 
 app.use(session(sess));
 
