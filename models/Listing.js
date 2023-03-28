@@ -47,6 +47,10 @@ Listing.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    genre: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
 
     user_id: {
       type: DataTypes.INTEGER,
