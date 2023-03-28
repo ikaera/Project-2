@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
       listing.get({ plain: true })
     );
 
-    console.log("list", listings)
+    // console.log("list", listings)
 
     res.render('homepage', {
       listings,
@@ -100,6 +100,14 @@ router.get('/sell', async (req, res) => {
   })
 })
 
+router.get('/profile', withAuth, async (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+});
+
+
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
@@ -108,5 +116,6 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
 
 module.exports = router;
