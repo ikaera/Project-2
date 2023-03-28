@@ -1,0 +1,35 @@
+<div class="row disc-listing">
+    <div class="col-auto disc-listing">
+        <h2 class="font-white">Welcome, {{name}}</h2>
+    </div>
+</div>
+<div class="row mt-4 disc-listing">
+    <div class="col-md-6 ">
+        <h3 class="font-white">Create New Listing</h3>
+
+        <form class="form new-listing">
+            <div class="form-group">
+                <label for="disc-title">Disc Title:</label>
+                <input class="form-input" type="text" id="disc-title" name="disc-title"/>
+            </div>
+        </form>
+    </div>
+{{#if listings.length}}
+<div class="col-md-6 listing-list">
+    <h3>Active Listings:</h3>
+
+    {{#each listings as |disc|}}
+    <div class="row mb-4">
+        <h4><a href="/listings/{{disc.id}}">{{disc.title}}</a></h4>
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{disc.id}}"> Delete Listing</button>
+    </div>
+    {{/each}}
+</div>
+{{/if}}
+</div>
+
+
+
+<script src="/js/profile.js"></script>

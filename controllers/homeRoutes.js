@@ -16,8 +16,8 @@ router.get('/', async (req, res) => {
     const listings = dbListingData.map((listing) =>
       listing.get({ plain: true })
     );
-
-    console.log('list', listings);
+    
+    // console.log("list", listings)
 
     req.session.save(() => {
       // We set up a session variable to count the number of times we visit the homepage
@@ -139,6 +139,35 @@ router.get('/sell', async (req, res) => {
   });
 });
 
+// router.get('/profile', withAuth, async (req, res) => {
+//   try {
+//     const userData = await User.findbyPk(req.session.user_id, {
+//       attributes: { exclude: ['password']},
+//       include: [{model: Listing }],
+//     });
+//     const user = userData.get({ plain: true});
+
+//     res.render('profile', {
+//       ...user,
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+router.get('/profile', withAuth, async (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  } else {
+    res.render('profile', {
+      logged_in: req.session.logged_in,
+    })
+  }
+});
+
+
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
@@ -147,5 +176,6 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
 
 module.exports = router;
