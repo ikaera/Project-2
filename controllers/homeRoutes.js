@@ -36,8 +36,8 @@ router.get('/', async (req, res) => {
     let visitorCounterValues = Object.values(expressVisitorCounter);
     let visitorCounterKeys = Object.keys(expressVisitorCounter);
 
-    console.log(`values:  ${visitorCounterValues}`);
-    console.log(`keys:  ${visitorCounterKeys}`);
+    console.log(`VALUES:  ${visitorCounterValues}`);
+    console.log(`KEYS:  ${visitorCounterKeys}`);
 
     let numberOfDailyUniqueSessions;
     let numberOfDailyUniqueIpAddresses;
