@@ -32,7 +32,7 @@ const sess = {
 };
 
 app.enable('trust proxy');
-
+app.use(session(sess));
 app.use(
   expressVisitorCounter({
     hook: (counterId) => (counters[counterId] = (counters[counterId] || 0) + 1),
@@ -44,7 +44,7 @@ app.use((req, res, next) => {
     req.session.counters = counters;
     // req.session.loggedIn = true;
     next();
-    // res.status(200).json(userData);
+    // res.status(200).json();
   });
 });
 
@@ -58,8 +58,6 @@ app.use((req, res, next) => {
 //   // app.get('/', (req, res, next) => res.json(counters));
 //   // app.listen(8080);
 // })();
-
-app.use(session(sess));
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
