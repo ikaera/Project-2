@@ -30,10 +30,11 @@ Listing.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    // cover_art: {
-    //   // type: DataTypes.FLOAT,
-    //   allowNull: true,
-    // },
+    // image url
+    cover_art: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     condition: {
       type: DataTypes.ENUM('New', 'Good', 'Fair'),
       allowNull: false,

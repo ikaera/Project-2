@@ -1,0 +1,30 @@
+{{#if loggedIn}}
+<section class="vinyl">
+    <img src="/images/{{vinyl.filename}}" alt="{{vinyl.description}}">
+    <div class="vinyl-details">
+        <h3>{{vinyl.title}}</h3>
+        <p>By: {{vinyl.artist}}</p>
+        <p>Genre: {{vinyl.genre}}</p>
+        <p>Description: {{vinyl.description}}</p>
+    </div>
+</section>
+{{else}}
+<a href="/login"> Log in to view this page. </a>
+{{/if}}
+
+
+
+{{!-- <div class="text-center">
+    <h2>{{name}}</h2>
+    <p>{{{get_img}}}</p>
+    <p>{{description}}</p>
+    <p>{{price}}</p>
+    <p> Seller: {{user.name}} </p>
+    <p>
+        <span for="img" aria-label="money"></span>
+        <span class="dollar-amount">{{format_amount price}}</span>
+    </p>
+    <p>
+        <button class="btn btn-primary"> Purchase </button>
+    </p>
+</div> --}}
