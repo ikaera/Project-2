@@ -60,11 +60,21 @@ router.get('/user/:id', withAuth, async (req, res) => {
 router.get('/listing/:id', withAuth, async (req, res) => {
 // does not need a !logged_in set up if it has withAuth function in the get
     try {
-      const dbListingData = await Listing.findByPk(req.params.id);
+      const dbListingData = await Listing.findByPk(req.params.id, {
+        include: [
+          {
+            model: User,
+            attributes: ['name'],
+          },
+        ],
+      });
 
       const listing = dbListingData.get({ plain: true });
 
-      res.render('listing', { listing, logged_in: req.session.logged_in });
+      res.render('single-listing', { 
+        ...listing, 
+        logged_in: req.session.logged_in 
+      });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -94,7 +104,7 @@ router.get('/vinyls', withAuth, async (req, res) => {
 
     
     res.render('vinyls', {
-      vinyls,
+      ...vinyls,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -117,7 +127,7 @@ router.get('/cds', withAuth, async (req, res) => {
     console.log(cds);
 
     res.render('cds', {
-      cds,
+      ...cds,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -140,7 +150,7 @@ router.get('/cassettes', withAuth, async (req, res) => {
     console.log(cassettes);
 
     res.render('cassettes', {
-      cassettes,
+      ...cassettes,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
