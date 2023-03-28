@@ -75,10 +75,11 @@ li a:hover {
 }
 
 .header-acc {
+  overflow: auto;
   float: right;
   padding: 15px 0px;
   position: fixed;
-  right: 369px;
+  right: 359px;
 }
 
 .header-acc > div {

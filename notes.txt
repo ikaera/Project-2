@@ -46,3 +46,19 @@
 </body>
 
 </html>
+
+
+
+todo:
+
+Make Listing Prettier!
+ -Artist (bold, nice)
+ -Album Title Under the Artist
+ -Bigger Font
+ -More info, creation/release date/seller info
+
+resolve profile
+
+resolve searchbar, heart, shopping cart 
+
+resolve logout
