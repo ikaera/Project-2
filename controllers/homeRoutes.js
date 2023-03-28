@@ -85,7 +85,7 @@ router.get('/vinyls', withAuth, async (req, res) => {
   try {
     const vinylData = await Listing.findAll({
       where: {
-        format: vinyl,
+        format: 'vinyl',
       }
     });
 
@@ -109,7 +109,7 @@ router.get('/cds', withAuth, async (req, res) => {
   try {
     const cdData = await Listing.findAll({
       where: {
-        format: CD,
+        format: 'CD',
       }
     });
 
@@ -132,7 +132,7 @@ router.get('/cassettes', withAuth, async (req, res) => {
   try {
     const cassetteData = await Listing.findAll({
       where: {
-        format: cassette,
+        format: 'cassette',
       }
     });
 
