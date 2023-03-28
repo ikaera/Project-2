@@ -1,20 +1,16 @@
-{{#each listings as |disc|}}
-  <div class='row mb-4 vinyl'>
-    <div class='col-md-5'>
-      <h2>
-        {{{get_img}}}
-        {{#if disc.cover_art}}
-          <img class='cover-art' src='{{disc.cover_art}}' />
-        {{else}}
-          <img class='cover-art' src='/img/disc-icon.png' />
-        {{/if}}
-        <a href='/listings/{{disc.id}}'>{{disc.artist}}</a>
-
-      </h2>
-
-      <p>
-        <span for='img'></span>
-      </p>
+{{#each listings as |disc| }}
+<div class="row mb-4 listings">
+    <div class="col-md-5">
+            {{#if disc.cover_art}}
+                <img class="cover-art" src="{{disc.cover_art}}" alt="{{disc.album_title}}" />
+                {{else}}
+                <img class="cover-art" src="/img/disc-icon.png">
+            {{/if}}
+            <a href="/listings/{{disc.id}}">{{disc.artist}}</a>
+        <h2>{{disc.album_title}}</h2>
+        <p>{{disc.artists}}</p>
+        <p>{{disc.condition}}</p>
+        <p>{{disc.description}}</p>
     </div>
   </div>
 {{/each}}
