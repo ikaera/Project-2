@@ -16,12 +16,53 @@ router.get('/', async (req, res) => {
     const listings = dbListingData.map((listing) =>
       listing.get({ plain: true })
     );
-
+    
     // console.log("list", listings)
+
+    req.session.save(() => {
+      // We set up a session variable to count the number of times we visit the homepage
+      if (req.session.countVisit) {
+        // If the 'countVisit' session variable already exists, increment it by 1
+        req.session.countVisit++;
+      } else {
+        // If the 'countVisit' session variable doesn't exist, set it to 1
+        req.session.countVisit = 1;
+      }
+    });
+    let expressVisitorCounter = req.session.counters;
+
+    console.log(expressVisitorCounter);
+
+    let visitorCounterValues = Object.values(expressVisitorCounter);
+    let visitorCounterKeys = Object.keys(expressVisitorCounter);
+
+    console.log(`values:  ${visitorCounterValues}`);
+    console.log(`keys:  ${visitorCounterKeys}`);
+
+    let numberOfDailyUniqueSessions;
+    let numberOfDailyUniqueIpAddresses;
+    let numberOfDailyRequests;
+
+    for (let i = 0; i < visitorCounterKeys.length; i++) {
+      if (visitorCounterKeys[i].split('-')[1] === 'sessions') {
+        numberOfDailyUniqueSessions = visitorCounterValues[i];
+      } else if (visitorCounterKeys[i].split('-')[1] === 'ip') {
+        numberOfDailyUniqueIpAddresses = visitorCounterValues[i];
+      } else if (visitorCounterKeys[i].split('-')[1] === 'requests') {
+        numberOfDailyRequests = visitorCounterValues[i];
+      }
+    }
 
     res.render('homepage', {
       listings,
       logged_in: req.session.logged_in,
+
+      // We send over the current 'countVisit' session variable to be rendered
+      countVisit: req.session.countVisit,
+      // totalVisitors: Object.keys(expressVisitorCounter).length,
+      numberOfDailyRequests: numberOfDailyRequests,
+      numberOfDailyUniqueIpAddresses: numberOfDailyUniqueIpAddresses,
+      numberOfDailyUniqueSessions: numberOfDailyUniqueSessions,
     });
   } catch (err) {
     console.log(err);
@@ -79,7 +120,7 @@ router.get('/listing/:id', withAuth, async (req, res) => {
 });
 
 router.get('/sell', async (req, res) => {
-  // 
+  //
   const dbListingData = await Listing.findAll({
     // include: [
     //   {
@@ -89,16 +130,14 @@ router.get('/sell', async (req, res) => {
     // ],
   });
 
-  const listings = dbListingData.map((listing) =>
-    listing.get({ plain: true })
-  );
+  const listings = dbListingData.map((listing) => listing.get({ plain: true }));
 
   res.render('listing', {
     vinyl: true,
     vinyls: listings,
     logged_in: req.session.logged_in,
-  })
-})
+  });
+});
 
 // router.get('/profile', withAuth, async (req, res) => {
 //   try {
