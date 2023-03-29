@@ -8,9 +8,13 @@
             {{/if}}
             <a href="/listing/{{disc.id}}">{{disc.artist}}</a>
         <h2>{{disc.album_title}}</h2>
-        <p>{{disc.artists}}</p>
-        <p>{{disc.condition}}</p>
-        <p>{{disc.description}}</p>
+        <p>By: {{disc.artist}}</p>
+        <p>Genre: {{disc.genre}}</p>
+        <p>Format: {{disc.format}}</p>
+        <p>Condition: {{disc.condition}}</p>
+        <p>Descritption: {{disc.description}}</p>
+        <p>Price: {{disc.price}}</p>
+        <p>Seller: {{disc.User.name}}</p>
     </div>
     <div>
       <button id="addFavoriteBtn" class="btn btn-sm btn-danger" data-id="{{disc.id}}">Save To Favorites</button>
