@@ -1,7 +1,7 @@
 const User = require('./User');
 const Listing = require('./Listing');
-const Cart = require('./Cart');
-const CartItem = require('./CartItem');
+// const Cart = require('./Cart');
+// const CartItem = require('./CartItem');
 const Favorites = require('./Favorites');
 const FavItem = require('./FavItem');
 
@@ -13,6 +13,17 @@ User.hasMany(Listing, {
 Listing.belongsTo(User, {
   foreignKey: 'user_id',
 });
+
+Favorites.hasMany(FavItem, {
+  foreignKey: 'favitem_id',
+  onDelete: 'CASCADE',
+});
+
+//FAVitmes belongs to favorites
+
+//user hasMany
+
+//favitem belong to
 
 /* // will probably need more than this!!
 Cart.belongsTo(User, {
@@ -31,4 +42,6 @@ Favorites.hasMany(FavItem, {
   // favorites info
 }); */
 
-module.exports = { User, Listing };
+module.exports = { User, Listing, Favorites, FavItem };
+
+// "how to get it so that when the "save to favorites" button is pressed on a listing, it creates a new Fav Item that clones specific parts of the Listing information and then goes into the '/myitems' page and stays there with cookies"
