@@ -195,7 +195,7 @@ router.get('/login', (req, res) => {
 // logout route appears to be missing?
 
 // My saved itmes(Favitems and Favorites)
-router.get('/saved', withAuth, async (req, res) => {
+router.get('/myitems', withAuth, async (req, res) => {
   try {
     const favItemsData = await FavItem.findAll({
       where: {
