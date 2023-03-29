@@ -14,21 +14,30 @@ Listing.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-/* // will probably need more than this!!
-Cart.belongsTo(User, {
-  // cart info
-});
+// will probably need more than this!!
 
-Favorites.belongsTo(User, {
-  // favorites info
+User.hasMany(Product);
+
+User.hasOne(Cart);
+Cart.belongsTo(User);
+
+Cart.belongsToMany(Product, {
+    through: CartItem
 });
+Product.belongsToMany(Cart, {
+    through: CartItem
+});
+// Favorites.belongsTo(User, {
+//   // favorites info
+// });
 
 Cart.hasMany(CartItem, {
   // cart info
+    foreignKey: 'user_id',
 });
 
 Favorites.hasMany(FavItem, {
   // favorites info
-}); */
+});
 
 module.exports = { User, Listing };
