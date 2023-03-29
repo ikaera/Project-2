@@ -1,34 +1,36 @@
 {{! Irakli }}
 
-<section class='flex-row justify-center'>
+{{!-- <section class='flex-row justify-center'>
   <h2>Hello {{user.name}} </h2>
   <h3>Saved items list:</h3>
+</section> --}}
+
+<section class='saved-item-section'>
+  <h1>Your Saved items list:</h1>
+  {{#each favItems}}
+
+    <section class='listing'>
+      <img
+        src='{{listing.cover_art}}'
+        alt='Cover Art for {{listing.album_title}} by {{listing.artist}}'
+      />
+      <div class='listing-details'>
+        <h4>{{listing.album_title}}</h4>
+        <p>By: {{listing.artist}}</p>
+        <p>Genre: {{listing.genre}}</p>
+        <p>Format: {{listing.format}}</p>
+        <p>Condition: {{listing.condition}}</p>
+        <p>Description: {{listing.description}}</p>
+        <p>Price: {{listing.price}}</p>
+      </div>
+      {{! if we get the time this would be a great place to include an Update Listing }}
+      <div class='col-md-4'>
+        <button class='btn btn-sm' data-id='{{listing.id}}'>
+          Remove from saved</button>
+      </div>
+    </section>
+  {{/each}}
 </section>
-
-{{#each favItems}}
-  <h2>Your Listings</h2>
-  <section class='listing'>
-    <img
-      src='{{listing.cover_art}}'
-      alt='Cover Art for {{listing.album_title}} by {{listing.artist}}'
-    />
-    <div class='listing-details'>
-      <h3>{{listing.album_title}}</h3>
-      <p>By: {{listing.artist}}</p>
-      <p>Genre: {{listing.genre}}</p>
-      <p>Format: {{listing.format}}</p>
-      <p>Condition: {{listing.condition}}</p>
-      <p>Description: {{listing.description}}</p>
-      <p>Price: {{listing.price}}</p>
-    </div>
-    {{! if we get the time this would be a great place to include an Update Listing }}
-    <div class='col-md-4'>
-      <button class='btn btn-sm btn-danger' data-id='{{listing.id}}'>
-        Delete Listing</button>
-    </div>
-  </section>
-{{/each}}
-
 {{!-- <div class='row mt-4'>
   {{if loggedIn}}
   {{> vinyl-details}}

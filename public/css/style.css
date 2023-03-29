@@ -265,33 +265,32 @@ textarea.input {
 }
 
 .listing-section {
-    background-color: white;
+  background-color: white;
 }
 
 .justify-space-between-md {
-    justify-content: space-between;
-    background-color: white;
-  }
+  justify-content: space-between;
+  background-color: white;
+}
 
-  .col-md-5 {
-    flex: 0 0 41.66667%;
-    max-width: 41.66667%;
-    background-color: white;
-  }
+.col-md-5 {
+  flex: 0 0 41.66667%;
+  max-width: 41.66667%;
+  background-color: white;
+}
 
 .mb-4 {
-    margin-bottom: 1.375rem;
-    background-color: white;
+  margin-bottom: 1.375rem;
+  background-color: white;
 }
 
 .disc-listing {
-    background-color: #333;
-    color: white;
+  background-color: #333;
+  color: white;
 }
 
 .font-white {
-    color: white;
-
+  color: white;
 }
 @media only screen and (max-width: 991px) {
   .header-ctn .menu-toggle {
@@ -344,8 +343,14 @@ textarea.input {
 }
 
 .cover-art {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
+}
+
+.saved-item-section {
+  background-color: #fff;
+  padding: 15px;
+  margin: 25px;
 }
 
 #footer {
