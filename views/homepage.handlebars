@@ -6,13 +6,13 @@
                 {{else}}
                 <img class="cover-art" src="/img/disc-icon.png">
             {{/if}}
-            <a href="/listings/{{disc.id}}">{{disc.artist}}</a>
+            <a href="/listing/{{disc.id}}">{{disc.artist}}</a>
         <h2>{{disc.album_title}}</h2>
         <p>{{disc.artists}}</p>
         <p>{{disc.condition}}</p>
         <p>{{disc.description}}</p>
     </div>
-  </div>
+</div>
 {{/each}}
 
 {{!-- erroneous, in the wrong place, should only show any of this when looking at a *SPECIFIC* listing

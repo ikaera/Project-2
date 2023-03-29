@@ -15,7 +15,8 @@ const seedDatabase = async () => {
   for (const listing of listingData) {
     await Listing.create({
       ...listing,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
+      /* why would we want a random ID? */
+      /* user_id: users[Math.floor(Math.random() * users.length)].id, */
     });
   }
 
