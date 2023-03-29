@@ -211,7 +211,7 @@ router.get('/myitems', withAuth, async (req, res) => {
     });
 
     const favItems = favItemsData.map((item) => {
-      item.get({ plain: true });
+      return item.get({ plain: true });
     });
     console.log(favItems);
 

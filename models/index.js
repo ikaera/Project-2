@@ -27,13 +27,25 @@ Listing.belongsTo(User, {
 
 //user hasMany
 User.hasMany(Favorites, {
+  // through: Favorites,
   foreignKey: 'user_id',
   onDelete: 'CASCADE',
 });
 
 //favitem belong to
 Favorites.belongsTo(User, {
-  foreignKey: 'favitem',
+  foreignKey: 'user_id',
+});
+
+Listing.hasMany(Favorites, {
+  // through: Favorites,
+  foreignKey: 'favitem_id',
+  onDelete: 'CASCADE',
+});
+
+//favitem belong to
+Favorites.belongsTo(Listing, {
+  foreignKey: 'favitem_id',
 });
 
 /* // will probably need more than this!!

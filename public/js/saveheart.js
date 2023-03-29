@@ -16,7 +16,7 @@ const favoriteFormHandler = async (event) => {
       body: JSON.stringify({ id }),
       headers: { 'Content-Type': 'application/json' },
     });
-    const result = response.json();
+    const result = await response.json();
     console.log(result);
     // if (response.ok) {
     //   document.location.replace('/profile');

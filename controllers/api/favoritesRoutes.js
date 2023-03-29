@@ -8,6 +8,7 @@ router.post('/', async (req, res) => {
       favitem_id: req.body.id,
       user_id: req.session.user_id,
     });
+    console.log(userData);
     res.status(200).json(userData);
   } catch (err) {
     res.status(400).json(err);
