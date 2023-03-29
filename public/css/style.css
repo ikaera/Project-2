@@ -48,6 +48,7 @@ ol {
 }
 
 .header-acc {
+  overflow: auto;
   float: right;
   padding: 15px 0px;
 }
