@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-auto">
-        <h2>Hey there, {{user.name}}.</h2>
+        {{!-- this will require Including the User model and name attribute in the Home Route for /listing in order to properly show the Username --}}
+        <h2>Hey there, {{User.name}}.</h2>
     </div>
 </div>
 
@@ -9,56 +10,9 @@
         <h3>Create a New Listing</h3>
         {{> listing-details}}
     </div>
-
-{{!-- why are we displaying multiple listings on the create listing page? shouldn't this be in the profile or the homepage?
-also: spread out the function here to allow for separate grouping of all formats rather than just a bulk batch of only vinyls, might be able to repurpose this formatting on better-fit pages --}}
-    {{#if vinyls.length}}
-    <div class="col-md-6 vinyl-list">
-        <h3>Current Vinyl Listings:</h3>
-
-        {{#each vinyls as | vinyl | }}
-        <div class="row mb-2">
-            <div class="col-md-8">
-                <h4><a href="/vinyl/{{vinyl.id}}">{{vinyl.name}}</a></h4>
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-sm btn-primary" data-id="{{vinyl.id}}"> Add to Cart </button>
-            </div>
-        </div>
-        {{/each}}
-    </div>
-    {{/if}}
-    {{#if CDs.length}}
-    <div class="col-md-6 cd-list">
-        <h3>Current CD Listings:</h3>
-
-        {{#each CDs as | CD | }}
-        <div class="row mb-2">
-            <div class="col-md-8">
-                <h4><a href="/cds/{{cd.id}}">{{cd.name}}</a></h4>
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-sm btn-primary" data-id="{{cd.id}}"> Add to Cart </button>
-            </div>
-        </div>
-        {{/each}}
-    </div>
-    {{/if}}
-    {{#if cassettes.length}}
-    <div class="col-md-6 cassette-list">
-        <h3>Current Cassette Listings:</h3>
-
-        {{#each cassettes as | cassette | }}
-        <div class="row mb-2">
-            <div class="col-md-8">
-                <h4><a href="/cassette/{{cassette.id}}">{{cassette.name}}</a></h4>
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-sm btn-primary" data-id="{{cassette.id}}"> Add to Cart </button>
-            </div>
-        </div>
-        {{/each}}
-    </div>
 </div>
+
+{{!-- removed showing of all listings on the page used to create a new listing
+seemed uneccessary, that info is better kept on the homepage or individual format pages --}}
 
 <script src="/js/script.js"></script>
