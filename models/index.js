@@ -20,10 +20,21 @@ Favorites.hasMany(FavItem, {
 });
 
 //FAVitmes belongs to favorites
+FavItem.belongsTo(Favorites, {
+  foreignKey: 'favitem_id',
+  // onDelete: 'CASCADE'
+});
 
 //user hasMany
+User.hasMany(Favorites, {
+  foreignKey: 'favitem_id',
+  onDelete: 'CASCADE',
+});
 
 //favitem belong to
+FavItem.belongsTo(User, {
+  foreignKey: 'favitem',
+});
 
 /* // will probably need more than this!!
 Cart.belongsTo(User, {
