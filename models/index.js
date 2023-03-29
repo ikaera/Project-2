@@ -14,25 +14,25 @@ Listing.belongsTo(User, {
   foreignKey: 'user_id',
 });
 
-Favorites.hasMany(FavItem, {
-  foreignKey: 'favitem_id',
-  onDelete: 'CASCADE',
-});
+// Favorites.hasMany(FavItem, {
+//   foreignKey: 'favitem_id',
+//   onDelete: 'CASCADE',
+// });
 
-//FAVitmes belongs to favorites
-FavItem.belongsTo(Favorites, {
-  foreignKey: 'favitem_id',
-  // onDelete: 'CASCADE'
-});
+// //FAVitmes belongs to favorites
+// FavItem.belongsTo(Favorites, {
+//   foreignKey: 'favitem_id',
+//   // onDelete: 'CASCADE'
+// });
 
 //user hasMany
 User.hasMany(Favorites, {
-  foreignKey: 'favitem_id',
+  foreignKey: 'user_id',
   onDelete: 'CASCADE',
 });
 
 //favitem belong to
-FavItem.belongsTo(User, {
+Favorites.belongsTo(User, {
   foreignKey: 'favitem',
 });
 

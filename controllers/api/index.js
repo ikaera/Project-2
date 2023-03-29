@@ -6,7 +6,7 @@ const favItemRoutes = require('./favItemRoutes');
 
 router.use('/users', userRoutes);
 router.use('/listings', listingRoutes);
-router.use('favorites', favoritesRoutes);
+router.use('/favorites', favoritesRoutes);
 router.use('/favItem', favItemRoutes);
 
 module.exports = router;

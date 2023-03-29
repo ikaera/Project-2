@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Listing, FavItem } = require('../models');
+const { User, Listing, FavItem, Favorites } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -197,17 +197,18 @@ router.get('/login', (req, res) => {
 // My saved itmes(Favitems and Favorites)
 router.get('/myitems', withAuth, async (req, res) => {
   try {
-    const favItemsData = await FavItem.findAll({
-      where: {
-        user_id: req.session.favitem_id,
-      },
-    });
-    // or
-    // const favItemsData = await Favorites.findAll({
+    // const favItemsData = await FavItem.findAll({
     //   where: {
     //     user_id: req.session.favitem_id,
     //   },
     // });
+    // or
+    const favItemsData = await Favorites.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+      include: [Listing],
+    });
 
     const favItems = favItemsData.map((item) => {
       item.get({ plain: true });

@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 // const bcrypt = require('bcrypt');
-
+const Sequelize = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Favorites extends Model {
@@ -20,7 +20,14 @@ Favorites.init(
     favitem_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'favitem',
+        model: 'listing',
+        key: 'id',
+      },
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
         key: 'id',
       },
     },
