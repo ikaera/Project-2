@@ -7,11 +7,11 @@ const FavItem = require('./FavItem');
 
 User.hasMany(Listing, {
   foreignKey: 'user_id',
-  onDelete: 'CASCADE'
+  onDelete: 'CASCADE',
 });
 
 Listing.belongsTo(User, {
-  foreignKey: 'user_id'
+  foreignKey: 'user_id',
 });
 
 // will probably need more than this!!
