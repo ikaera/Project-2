@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Listing } = require('../models');
+const { User, Listing, FavItem } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -193,5 +193,36 @@ router.get('/login', (req, res) => {
 });
 
 // logout route appears to be missing?
+
+// My saved itmes(Favitems and Favorites)
+router.get('/saved', withAuth, async (req, res) => {
+  try {
+    const favItemsData = await FavItem.findAll({
+      where: {
+        user_id: req.session.favitem_id,
+      },
+    });
+    // or
+    // const favItemsData = await Favorites.findAll({
+    //   where: {
+    //     user_id: req.session.favitem_id,
+    //   },
+    // });
+
+    const favItems = favItemsData.map((item) => {
+      item.get({ plain: true });
+    });
+    console.log(favItems);
+
+    res.render('myitems', {
+      /* this has to be matched in the handlebar references!!! */
+      favItems,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
