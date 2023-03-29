@@ -14,7 +14,7 @@ Listing.belongsTo(User, {
   foreignKey: 'user_id',
 });
 
-// will probably need more than this!!
+/* // will probably need more than this!!
 Cart.belongsTo(User, {
   // cart info
 });
@@ -29,6 +29,6 @@ Cart.hasMany(CartItem, {
 
 Favorites.hasMany(FavItem, {
   // favorites info
-});
+}); */
 
 module.exports = { User, Listing };
