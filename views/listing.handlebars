@@ -1,6 +1,8 @@
 <div class="row">
     <div class="col-auto">
         {{!-- this will require Including the User model and name attribute in the Home Route for /listing in order to properly show the Username --}}
+        {{!-- actually realizing this will require assigning an exported render variable that relates to the username associated with the req.session.user_id 
+        which is a whole other barrel of monkeys --}}
         <h2>Hey there, {{User.name}}.</h2>
     </div>
 </div>

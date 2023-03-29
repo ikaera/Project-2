@@ -14,8 +14,18 @@
         {{/if}}
         <a href="/listing/{{listing.id}}">{{listing.artist}}</a>
         <h2>{{listing.album_title}}</h2>
-        <p>{{listing.artist}}</p>
-        <p>{{listing.condition}}</p>
-        <p>{{listing.description}}</p>
+        <p>By: {{listing.artist}}</p>
+        <p>Genre: {{listing.genre}}</p>
+        <p>Format: {{listing.format}}</p>
+        <p>Condition: {{listing.condition}}</p>
+        <p>Descritption: {{listing.description}}</p>
+        <p>Price: {{listing.price}}</p>
+        <p>Seller: {{listing.User.name}}</p>
+    </div>
+    <div>
+      <button id="addFavoriteBtn" class="btn btn-sm btn-danger" data-id="{{disc.id}}">Save To Favorites</button>
+    </div>
+    <div>
+      <button id="addCartBtn" class="btn btn-sm btn-danger" data-id="{{disc.id}}">Add To My Cart</button>
     </div>
 </div>
