@@ -6,7 +6,10 @@
 </section>
 
 <div class='row mt-4'>
-  {{if }}
+  {{if loggedIn}}
+  {{> vinyl-details}}
+
+  <a href="/login"> Log in, please, to view saved itmes</a>
   {{/if}}
 </div>
 
