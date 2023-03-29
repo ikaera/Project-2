@@ -5,64 +5,26 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const dbListingData = await Listing.findAll({
-      // include: [
-      //   {
-      //     model: Listing,
-      //     attributes: ['coverart', 'description', 'price'],
-      //   },
-      // ],
+      // including the User.name so that the username of seller can be displayed
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
     });
 
     const listings = dbListingData.map((listing) =>
       listing.get({ plain: true })
     );
-    
-    // console.log("list", listings)
 
-    req.session.save(() => {
-      // We set up a session variable to count the number of times we visit the homepage
-      if (req.session.countVisit) {
-        // If the 'countVisit' session variable already exists, increment it by 1
-        req.session.countVisit++;
-      } else {
-        // If the 'countVisit' session variable doesn't exist, set it to 1
-        req.session.countVisit = 1;
-      }
-    });
-    let expressVisitorCounter = req.session.counters;
-
-    console.log(expressVisitorCounter);
-
-    let visitorCounterValues = Object.values(expressVisitorCounter);
-    let visitorCounterKeys = Object.keys(expressVisitorCounter);
-
-    console.log(`VALUES:  ${visitorCounterValues}`);
-    console.log(`KEYS:  ${visitorCounterKeys}`);
-
-    let numberOfDailyUniqueSessions;
-    let numberOfDailyUniqueIpAddresses;
-    let numberOfDailyRequests;
-
-    for (let i = 0; i < visitorCounterKeys.length; i++) {
-      if (visitorCounterKeys[i].split('-')[1] === 'sessions') {
-        numberOfDailyUniqueSessions = visitorCounterValues[i];
-      } else if (visitorCounterKeys[i].split('-')[1] === 'ip') {
-        numberOfDailyUniqueIpAddresses = visitorCounterValues[i];
-      } else if (visitorCounterKeys[i].split('-')[1] === 'requests') {
-        numberOfDailyRequests = visitorCounterValues[i];
-      }
-    }
+    // all of the site visit info was in the wrong place!
+    // we only need a unique visitor counter for specific listings, not to display randomly on the homepage
+    // we need to find a way to set up the visiter tracker outside of the get routes and call it into the get routes so that it can be simplified for practical usage
 
     res.render('homepage', {
       listings,
       logged_in: req.session.logged_in,
-
-      // We send over the current 'countVisit' session variable to be rendered
-      countVisit: req.session.countVisit,
-      // totalVisitors: Object.keys(expressVisitorCounter).length,
-      numberOfDailyRequests: numberOfDailyRequests,
-      numberOfDailyUniqueIpAddresses: numberOfDailyUniqueIpAddresses,
-      numberOfDailyUniqueSessions: numberOfDailyUniqueSessions,
     });
   } catch (err) {
     console.log(err);
@@ -70,103 +32,156 @@ router.get('/', async (req, res) => {
   }
 });
 
-// this will need be GET for all listings by a specific user ID, needs reformatting
+// get all Listings from a specific User
 router.get('/user/:id', withAuth, async (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-  } else {
-    try {
-      const dbUserData = await User.findByPk(req.params.id, {
-        include: [
-          {
-            model: Listing,
-            attributes: [
-              'id',
-              'title',
-              'artist',
-              'release_date',
-              'coverart',
-              'label',
-              'price',
-              'description',
-            ],
-          },
-        ],
-      });
-      const user = dbUserData.get({ plain: true });
-      res.render('user', { user, logged_in: req.session.logged_in });
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
+  // there is already a withAuth added to the get, does not need the if/else
+  // redesigning so that a User/:id gets LISTINGS for the user, not just Users for the User which made little sense
+  try {
+    const userListingData = await Listing.findAll({
+      where: {
+        user_id: req.params.id,
+      },
+    });
+
+    const userListings = userListingData.map((listing) =>
+      listing.get({ plain: true })
+    );
+    console.log(userListings);
+
+    res.render('user', {
+      userListings,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
+// this needs to be updated (with handlebars update) so that it renders 'single-listing' and displays just the listing being selected
 router.get('/listing/:id', withAuth, async (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-  } else {
-    try {
-      const dbListingData = await Listing.findByPk(req.params.id);
+  // does not need a !logged_in set up if it has withAuth function in the get
+  try {
+    const dbListingData = await Listing.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
 
-      const listing = dbListingData.get({ plain: true });
+    const listing = dbListingData.get({ plain: true });
 
-      res.render('listing', { listing, logged_in: req.session.logged_in });
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
+    res.render('single-listing', {
+      ...listing,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
-router.get('/sell', async (req, res) => {
-  //
-  const dbListingData = await Listing.findAll({
-    // include: [
-    //   {
-    //     model: Listing,
-    //     attributes: ['coverart', 'description', 'price'],
-    //   },
-    // ],
-  });
-
-  const listings = dbListingData.map((listing) => listing.get({ plain: true }));
-
+// this is the former /sell route, now loads the listing page with listing-details which needs to be adjusted to display less erroneous info
+router.get('/listing', withAuth, (req, res) => {
   res.render('listing', {
-    vinyl: true,
-    vinyls: listings,
     logged_in: req.session.logged_in,
   });
 });
 
-// router.get('/profile', withAuth, async (req, res) => {
-//   try {
-//     const userData = await User.findbyPk(req.session.user_id, {
-//       attributes: { exclude: ['password']},
-//       include: [{model: Listing }],
-//     });
-//     const user = userData.get({ plain: true});
+// this needs a try where it specifically finds All where format: vinyl
+router.get('/vinyls', withAuth, async (req, res) => {
+  try {
+    const vinylData = await Listing.findAll({
+      where: {
+        format: 'vinyl',
+      },
+    });
 
-//     res.render('profile', {
-//       ...user,
-//       logged_in: req.session.logged_in,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    const vinyls = vinylData.map((listing) => listing.get({ plain: true }));
+    console.log(vinyls);
 
-router.get('/profile', withAuth, async (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-    return;
-  } else {
-    res.render('profile', {
+    res.render('vinyls', {
+      ...vinyls,
       logged_in: req.session.logged_in,
-    })
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
+// this needs a try where it specifically finds All where format: CD
+router.get('/cds', withAuth, async (req, res) => {
+  try {
+    const cdData = await Listing.findAll({
+      where: {
+        format: 'CD',
+      },
+    });
+
+    const cds = cdData.map((listing) => listing.get({ plain: true }));
+    console.log(cds);
+
+    res.render('cds', {
+      ...cds,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// this needs a try where it specifically finds All where format: cassette
+router.get('/cassettes', withAuth, async (req, res) => {
+  try {
+    const cassetteData = await Listing.findAll({
+      where: {
+        format: 'cassette',
+      },
+    });
+
+    const cassettes = cassetteData.map((listing) =>
+      listing.get({ plain: true })
+    );
+    console.log(cassettes);
+
+    res.render('cassettes', {
+      ...cassettes,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// loads the currently logged-in user profile, only getting listings with matching user_id
+router.get('/profile', withAuth, async (req, res) => {
+  try {
+    const userListingData = await Listing.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+    });
+
+    const listingData = userListingData.map((listing) =>
+      listing.get({ plain: true })
+    );
+    console.log(listingData);
+
+    res.render('profile', {
+      /* this has to be matched in the handlebar references!!! */
+      listingData,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
@@ -177,5 +192,6 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// logout route appears to be missing?
 
 module.exports = router;

@@ -1,37 +1,37 @@
 <div class="row disc-listing">
     <div class="col-auto disc-listing">
+         {{!-- this will require Including the User model and name attribute in the Home Route for /listing in order to properly show the Username --}}
         <h2 class="font-white">Welcome, {{name}}</h2>
     </div>
 </div>
 <div class="row mt-4 disc-listing">
     <div class="col-md-6 ">
         <h3 class="font-white">Create New Listing</h3>
-
-        <form class="form new-listing">
-            <div class="form-group">
-                <label for="disc-title">Disc Title:</label>
-                <input class="form-input" type="text" id="disc-title" name="disc-title"/>
-            </div>
-        </form>
+        {{!-- present the full listing form! --}}
+        {{> listing-details}}
     </div>
 
-{{!-- I think the issue this is running into is that it needs some #with parameter or a lookup or a @root parameter added so that it can specifically generate listings where the user_id is equal to the req.session.user_id, and not just populate 100% of the listings. if we can get this working, that will make the saved items and cart way easier --}} 
-{{#if listings.length}}
-<div class="col-md-6 listing-list">
-    <h3>Active Listings:</h3>
+{{!-- #ifEq does not work, would need separate npm package I can't find
+#with does not work how I thought it did, need to adjust all other pathways --}}
 
-    {{#each listings as |disc|}}
-    <div class="row mb-4">
-        <h4><a href="/listings/{{disc.id}}">{{disc.title}}</a></h4>
-    </div>
-    <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{disc.id}}"> Delete Listing</button>
-    </div>
-    {{/each}}
-</div>
-{{/if}}
-</div>
-
-
+{{#each listingData as | listing |}}
+    <h2>Your Listings</h2>
+    <section class="listing">
+        <img src="{{listing.cover_art}}" alt="Cover Art for {{listing.album_title}} by {{listing.artist}}">
+        <div class="listing-details">
+            <h3>{{listing.album_title}}</h3>
+            <p>By: {{listing.artist}}</p>
+            <p>Genre: {{listing.genre}}</p>
+            <p>Format: {{listing.format}}</p>
+            <p>Condition: {{listing.condition}}</p>
+            <p>Description: {{listing.description}}</p>
+            <p>Price: {{listing.price}}</p>
+        </div>
+        {{!-- if we get the time this would be a great place to include an Update Listing --}}
+        <div class="col-md-4">
+            <button class="btn btn-sm btn-danger" data-id="{{listing.id}}"> Delete Listing</button>
+        </div>
+    </section>
+{{/each}}
 
 <script src="/js/profile.js"></script>

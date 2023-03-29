@@ -1,15 +1,14 @@
-{{!-- using #with to provide specificity and target the particular format --}}
-{{#with listing.format as | CD |}}
-{{#each listing as | cd |}}
-<section class="cd">
-    <img src="/img/{{cd.filename}}" alt="{{cd.description}}">
-    <div class="cd-details">
-        <h3>{{cd.title}}</h3>
-        <p>By: {{cd.artist}}</p>
-        <p>Genre: {{cd.genre}}</p>
-        <p>Description: {{cd.description}}</p>
-        <p>Price: {{cd.price}}</p>
-    </div>
-</section>
+{{#each cds as | cd |}}
+    <section class="cd">
+        <img class="cover-art" src="{{cd.cover_art}}" alt="Cover Art for {{cd.album_title}} by {{cd.artist}}">
+        <div class="cd-details">
+            <h3>{{cd.album_title}}</h3>
+            <p>By: {{cd.artist}}</p>
+            <p>Genre: {{cd.genre}}</p>
+            <p>Format: CD</p>
+            <p>Condition: {{cd.condition}}</p>
+            <p>Description: {{cd.description}}</p>
+            <p>Price: {{cd.price}}</p>
+        </div>
+    </section>
 {{/each}}
-{{/with}}
