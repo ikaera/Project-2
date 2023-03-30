@@ -1,36 +1,42 @@
 <div class="row disc-listing">
     <div class="col-auto disc-listing">
-         {{!-- this will require Including the User model and name attribute in the Home Route for /listing in order to properly show the Username --}}
-        <h2 class="font-black">Welcome, {{user.name}}</h2>
+        {{!-- this will require Including the User model and name attribute in the Home Route for /listing in order to
+        properly show the Username --}}
+        <h2 class="font-black">Welcome {{user.name}},</h2>
+        <div class="log-page-profile">
+            {{> listing-details}}
+        <div class="profile-div">
+            <h2>Your Listings</h2>
+            {{#each listingData as | listing |}}
+            <section class="listing">
+                <img class="img-profile" src="{{listing.cover_art}}" alt="Cover Art for {{listing.album_title}} by {{listing.artist}}">
+                <div class="listing-details">
+                    <h3 class="title-profile-h3">{{listing.album_title}}</h3>
+                    <p>By: {{listing.artist}}</p>
+                    <p>Genre: {{listing.genre}}</p>
+                    <p>Format: {{listing.format}}</p>
+                    <p>Condition: {{listing.condition}}</p>
+                    <p>Description: {{listing.description}}</p>
+                    <p>Price: {{listing.price}}</p>
+                </div>
+                {{!-- if we get the time this would be a great place to include an Update Listing --}}
+                <div class="col-md-4">
+                    <button class="btn btn-sm btn-danger" data-id="{{listing.id}}"> Delete Listing</button>
+                </div>
+            </section>
+            {{/each}}
+        </div>
+        </div>
     </div>
 </div>
-<div class="row mt-4 disc-listing">
+{{!-- <div class="row mt-4 disc-listing">
     <div class="col-md-6 ">
-        <h3 class="font-black">Create New Listing</h3>
+        <h3 class="font-black">Create New Listing</h3> --}}
         {{!-- present the full listing form! --}}
-        {{> listing-details}}
-    </div>
+        {{!--
+    </div> --}}
 
-{{!-- #ifEq does not work, would need separate npm package I can't find
-#with does not work how I thought it did, need to adjust all other pathways --}}
-    <h2>Your Listings</h2>
-{{#each listingData as | listing |}}
-    <section class="listing">
-        <img src="{{listing.cover_art}}" alt="Cover Art for {{listing.album_title}} by {{listing.artist}}">
-        <div class="listing-details">
-            <h3>{{listing.album_title}}</h3>
-            <p>By: {{listing.artist}}</p>
-            <p>Genre: {{listing.genre}}</p>
-            <p>Format: {{listing.format}}</p>
-            <p>Condition: {{listing.condition}}</p>
-            <p>Description: {{listing.description}}</p>
-            <p>Price: {{listing.price}}</p>
-        </div>
-        {{!-- if we get the time this would be a great place to include an Update Listing --}}
-        <div class="col-md-4">
-            <button class="btn btn-sm btn-danger" data-id="{{listing.id}}"> Delete Listing</button>
-        </div>
-    </section>
-{{/each}}
+    {{!-- #ifEq does not work, would need separate npm package I can't find
+    #with does not work how I thought it did, need to adjust all other pathways --}}
 
-<script src="/js/profile.js"></script>
+    <script src="/js/profile.js"></script>

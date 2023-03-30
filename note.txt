@@ -1,19 +1,13 @@
-Profile page
- - background color -> white
- - text color -> black
- - input text -> black
+
  -optional -> beautify 
  ----also cart/saved -> table template
  ----remove table header on pages like profile..etc check for more
 
  ((item.count.id))
 
-search bar functionality
- - to specified pages
-
-
  future develop
  - user profile clicks into their profile with list of all their disc listings
+ - search bar
 
 
 

@@ -3,16 +3,16 @@
         {{!-- this will require Including the User model and name attribute in the Home Route for /listing in order to properly show the Username --}}
         {{!-- actually realizing this will require assigning an exported render variable that relates to the username associated with the req.session.user_id 
         which is a whole other barrel of monkeys --}}
-        <h2>Hey there, {{user.name}}.</h2>
-    </div>
-</div>
-
-<div class="row mt-4">
-    <div class="col-md-6">
-        <h3>Create a New Listing</h3>
+        <h3 class="font-black">Hey {{user.name}},</h2>
         {{> listing-details}}
     </div>
 </div>
+{{!-- 
+<div class="row mt-4">
+    <div class="col-md-6">
+        {{> listing-details}}
+    </div>
+</div> --}}
 
 {{!-- removed showing of all listings on the page used to create a new listing
 seemed uneccessary, that info is better kept on the homepage or individual format pages --}}
