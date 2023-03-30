@@ -49,7 +49,7 @@ Listing.init(
     },
     genre: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
 
     user_id: {

@@ -1,20 +1,36 @@
-{{#each vinyls as | vinyl |}}
-    <section class="vinyl">
-        <img class="cover-art" src="{{vinyl.cover_art}}" alt="Cover Art for {{vinyl.album_title}} by {{vinyl.artist}}">
-        <div class="vinyl-details">
-            <h3>{{vinyl.album_title}}</h3>
-            <p>By: {{vinyl.artist}}</p>
-            <p>Genre: {{vinyl.genre}}</p>
-            <p>Format: Vinyl</p>
-            <p>Condition: {{vinyl.condition}}</p>
-            <p>Description: {{vinyl.description}}</p>
-            <p>Price: {{vinyl.price}}</p>
-        </div>
-        <div>
-            <button id="addFavoriteBtn" class="btn btn-sm btn-danger" data-id="{{disc.id}}">Save To Favorites</button>
-        </div>
-        <div>
-            <button id="addCartBtn" class="btn btn-sm btn-danger" data-id="{{disc.id}}">Add To My Cart</button>
-        </div>
-    </section>
+      <tbody>
+        <tr class="disc_item">
+{{#each vinyls as | disc | }}
+          <td class="disc_img">
+          {{#if disc.cover_art}}
+            <img class="cover-art" src="{{disc.cover_art}}" alt="{{disc.album_title}}" />
+                {{else}}
+                <img class="cover-art" src="/img/disc-icon.png">
+            {{/if}}
+            {{!-- <a href="/listing/{{disc.id}}">{{disc.artist}}</a> --}}
+          </td>
+          <td class="disc_desc">
+            <a href="/listing/{{disc.id}}"><strong>{{disc.album_title}}</strong></a>
+            <br>
+            <p>Artist: {{disc.artist}}</p>
+            <br>
+            <p>Condition: {{disc.condition}}</p>
+            <br>
+            <p>Description: {{disc.description}}</p>
+          </td>
+          <td class="seller_info">Seller: {{user.name}}</td>
+          <td class="item_price">Price: ${{disc.price}}</td>
+          <td class="item_format">Format: {{disc.format}}</td>
+          <td class="save_button">
+            <button id="addFavoriteBtn" 
+            class="btn btn-sm btn-danger"
+            data-id="{{disc.id}}">Save to Favorites</button>
+          </td>
+          <td class="cart_button">
+            <button id="addCartBtn"
+            class="btn btn-sm btn-danger"
+            data-id="{{disc.id}}">Add to Cart</button>
+          </td>
+        </tr>
 {{/each}}
+      </tbody>

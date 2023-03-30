@@ -1,3 +1,39 @@
+{{#each listings as |disc|}}
+  <div class='row mb-4 listings'>
+    <div class='col-md-5'>
+      {{#if disc.cover_art}}
+        <img
+          class='cover-art'
+          src='{{disc.cover_art}}'
+          alt='{{disc.album_title}}'
+        />
+      {{else}}
+        <img class='cover-art' src='/img/disc-icon.png' />
+      {{/if}}
+      <a href='/listing/{{disc.id}}'>{{disc.artist}}</a>
+      <h2>{{disc.album_title}}</h2>
+      <p>{{disc.artists}}</p>
+      <p>{{disc.condition}}</p>
+      <p>{{disc.description}}</p>
+    </div>
+    <div>
+      <button
+        id='addFavoriteBtn'
+        class='btn btn-sm btn-danger addFavoriteBtn'
+        data-id='{{disc.id}}'
+      >Save To Favorites</button>
+    </div>
+    <div>
+      <button
+        id='addCartBtn'
+        class='btn btn-sm btn-danger'
+        data-id='{{disc.id}}'
+      >Add To My Cart</button>
+    </div>
+  </div>
+{{/each}}
+
+<script src='./js/saveheart.js'></script>
       <tbody>
         <tr class="disc_item">
 {{#each listings as |disc| }}
@@ -10,7 +46,8 @@
             {{!-- <a href="/listing/{{disc.id}}">{{disc.artist}}</a> --}}
           </td>
           <td class="disc_desc">
-            <strong>{{disc.album_title}}</strong>
+            <a href="/listing/{{disc.id}}"><strong>{{disc.album_title}}</strong></a>
+            {{!-- <strong>{{disc.album_title}}</strong> --}}
             <br>
             <p>Artist: {{disc.artist}}</p>
             <br>
@@ -18,7 +55,7 @@
             <br>
             <p>Description: {{disc.description}}</p>
           </td>
-          <td class="seller_info">Seller:{{user.name}}</td>
+          <td class="seller_info">Seller: {{user.name}}</td>
           <td class="item_price">Price: ${{disc.price}}</td>
           <td class="item_format">Format: {{disc.format}}</td>
           <td class="save_button">
@@ -34,3 +71,4 @@
         </tr>
 {{/each}}
       </tbody>
+
