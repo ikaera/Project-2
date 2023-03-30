@@ -1,10 +1,10 @@
 {{!-- nothing here seems to be working, not sure at all as to why! --}}
 {{!-- however, at least, it is trying to load this page, as it is displaying the broken version of the cover art if/else statement --}}
-<div class="row">
+{{!-- <div class="row">
     <div class="col-auto">
         <h2>Hey there, {{User.name}}.</h2>
     </div>
-</div>
+</div> --}}
 <div class="row mb-4 listings">
     <div class="col-md-5">
         {{#if listing.cover_art}}
@@ -12,7 +12,7 @@
         {{else}}
         <img class="cover-art" src="/img/listing-icon.png">
         {{/if}}
-        <a href="/listing/{{listing.id}}">{{listing.artist}}</a>
+        {{!-- <a href="/listing/{{listing.id}}">{{listing.artist}}</a> --}}
         <h2>{{listing.album_title}}</h2>
         <p>By: {{listing.artist}}</p>
         <p>Genre: {{listing.genre}}</p>

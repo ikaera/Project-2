@@ -27,7 +27,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     });
 
     if (!favoritesData) {
-      res.status(400).json({ message: 'No saved itme found with this ID!' });
+      res.status(400).json({ message: 'No saved item found with this ID!' });
       return;
     }
   } catch (err) {

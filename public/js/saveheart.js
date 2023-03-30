@@ -31,7 +31,7 @@ favoriteBtn.forEach((btn) => {
 });
 
 // delete btn
-const deleteBtn = document.querySelectorAll('.delete-btn');
+const deleteBtn = document.querySelectorAll('.favRemoveBtn');
 
 const deleteHandler = async (event) => {
   event.preventDefault();

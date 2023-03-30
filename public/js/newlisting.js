@@ -28,7 +28,7 @@ const newListingHandler = async (event) => {
         listingStatus.style.color = 'red';
         listingStatusEl.appendChild(listingStatus);
         setTimeout(() => {
-            document.querySelector('status-div').style.display = 'none';
+            document.querySelector('.status-div').style.display = 'none';
         }, 3000);
     } else {
         const response = await fetch('/api/listings', {

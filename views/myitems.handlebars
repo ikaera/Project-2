@@ -33,70 +33,22 @@
           <td class="seller_info">Seller: {{user.name}}</td>
           <td class="item_price">Price: ${{listing.price}}</td>
           <td class="item_format">Format: {{listing.format}}</td>
-          {{!-- <td class="save_button">
-            <button id="addFavoriteBtn" 
-            class="btn btn-sm btn-danger"
-            data-id="{{disc.id}}">Save to Favorites</button>
-          </td> --}}
           <td class="remove_button">
             <button id="rmFavBtn"
-            class="btn btn-sm btn-danger"
-            data-id="{{disc.id}}">Remove from Saved</button>
+            class="btn btn-sm btn-danger favRemoveBtn"
+            data-id="{{listing.id}}">Remove from Saved</button>
           </td>
           <td class="cart_button">
-            <button id="addCartBtn"
-            class="btn btn-sm btn-danger"
-            data-id="{{disc.id}}">Add to Cart</button>
+            <button id="plusCartBtn"
+            class="btn btn-sm btn-danger addCartBtn"
+            data-id="{{listing.id}}">Add to Cart</button>
           </td>
         </tr>
 {{/each}}
       </tbody>
     </table>
 
-
-
-
-
-
-{{! Irakli }}
-
-{{!-- <section class='flex-row justify-center'>
-  <h2>Hello {{user.name}} </h2>
-  <h3>Saved items list:</h3>
-</section> --}}
-
-
-<section class='saved-item-section'>
-  <h1>Your Saved Items list:</h1>
-  {{#each favItems}}
-
-    <section class='listing'>
-      <img
-        src='{{listing.cover_art}}'
-        alt='Cover Art for {{listing.album_title}} by {{listing.artist}}'
-      />
-      <div class='listing-details'>
-        <h4>{{listing.album_title}}</h4>
-        <p>By: {{listing.artist}}</p>
-        <p>Genre: {{listing.genre}}</p>
-        <p>Format: {{listing.format}}</p>
-        <p>Condition: {{listing.condition}}</p>
-        <p>Description: {{listing.description}}</p>
-        <p>Price: {{listing.price}}</p>
-      </div>
-      <div class='col-md-4'>
-        <button class='btn btn-sm saveRemoveBtn' data-id='{{listing.id}}'>
-          Remove From Saved Items</button>
-      </div>
-    </section>
-  {{/each}}
-</section> --}}
-{{!-- <div class='row mt-4'>
-  {{if loggedIn}}
-  {{> vinyl-details}}
-
-  <a href="/login"> Log in, please, to view saved itmes</a>
-  {{/if}}
-</div> --}}
+{{!-- cleanup, adding script needed --}}
 
 <script src='/js/saveheart.js'></script>
+<script src="/js/addtocart.js"></script>

@@ -278,7 +278,7 @@ router.get('/myitems', withAuth, async (req, res) => {
     res.render('myitems', {
       favItems,
       logged_in: req.session.logged_in,
-      quantity: favItems.length,
+      favquantity: favItems.length,
     });
   } catch (err) {
     console.log(err);
@@ -286,7 +286,7 @@ router.get('/myitems', withAuth, async (req, res) => {
   }
 });
 
-router.get('/cart', withAuth, async (req, res) => {
+router.get('/mycart', withAuth, async (req, res) => {
   try {
     const cartItemsData = await Cart.findAll({
       where: {
@@ -300,9 +300,10 @@ router.get('/cart', withAuth, async (req, res) => {
     });
     console.log(cartItems);
 
-    res.render('cart', {
+    res.render('mycart', {
       cartItems,
       logged_in: req.session.logged_in,
+      cartquantity: cartItems.length,
     });
   } catch (err) {
     console.log(err);
