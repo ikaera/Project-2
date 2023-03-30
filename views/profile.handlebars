@@ -13,9 +13,8 @@
 
 {{!-- #ifEq does not work, would need separate npm package I can't find
 #with does not work how I thought it did, need to adjust all other pathways --}}
-
-{{#each listingData as | listing |}}
     <h2>Your Listings</h2>
+{{#each listingData as | listing |}}
     <section class="listing">
         <img src="{{listing.cover_art}}" alt="Cover Art for {{listing.album_title}} by {{listing.artist}}">
         <div class="listing-details">

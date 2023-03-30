@@ -4,7 +4,7 @@ const newListingHandler = async (event) => {
     event.preventDefault();
 
     const listingArtist = document.getElementById('listing-artist').value.trim();
-    const listingAlbum = document.getElementById('listing-title').value.trim();
+    const listingAlbum = document.getElementById('listing-name').value.trim();
     const listingFormat = document.getElementById('listing-format').value.trim();
     const listingDesc = document.getElementById('listing-desc').value.trim();
     const listingDate = document.getElementById('listing-release').value.trim();
@@ -19,8 +19,9 @@ const newListingHandler = async (event) => {
         const listingStatusEl = document.createElement('div');
         listingStatusEl.classList.add('form-group');
         listingStatusEl.classList.add('status-div');
-        document.querySelector('status-div').style.display = 'flex';
         newListingForm.appendChild(listingStatusEl);
+        // query selector can't work until AFTER something is appended onto the page!!!
+        document.querySelector('.status-div').style.display = 'flex';
         const listingStatus = document.createElement('h2');
         listingStatus.classList.add('listing-status')
         listingStatus.textContent = 'All fields must be filled!';
@@ -33,16 +34,17 @@ const newListingHandler = async (event) => {
         const response = await fetch('/api/listings', {
             method: 'POST',
             body: JSON.stringify({
-                listingArtist,
-                listingAlbum,
-                listingFormat,
-                listingDesc,
-                listingDate,
-                listingCover,
-                listingCondition,
-                listingLabel,
-                listingPrice,
-                listingGenre,
+                // assigned constants can't work without being assigned to the model!!!
+                artist: listingArtist,
+                album_title: listingAlbum,
+                format: listingFormat,
+                description: listingDesc,
+                release_date: listingDate,
+                cover_art: listingCover,
+                condition: listingCondition,
+                label: listingLabel,
+                price: listingPrice,
+                genre: listingGenre,
             }),
             headers: {
                 'Content-Type': 'application/json',
@@ -50,17 +52,19 @@ const newListingHandler = async (event) => {
         });
 
         if (response.ok) {
+            /* alert('Success'); */
             /* adjusting to the improved formatting above */
             const listingStatusEl = document.createElement('div');
             listingStatusEl.classList.add('form-group');
             listingStatusEl.classList.add('status-div');
-            document.querySelector('status-div').style.display = 'flex';
             newListingForm.appendChild(listingStatusEl);
+            document.querySelector('.status-div').style.display = 'flex';
             const listingStatus = document.createElement('h2');
             listingStatus.classList.add('listing-status')
             listingStatus.textContent = 'Listing Added Successfully!';
             listingStatus.style.color = 'green';
             listingStatusEl.appendChild(listingStatus);
+            
             setTimeout(() => {
                 document.location.replace('/profile');
             }, 3000);
