@@ -31,4 +31,4 @@ favoriteBtn.forEach((btn) => {
 });
 
 // delete btn
-const deleteBtn = document.querySelector('');
+// const deleteBtn = document.querySelector('');
