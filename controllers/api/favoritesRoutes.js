@@ -19,7 +19,7 @@ router.delete('/:id', withAuth, async (req, res) => {
   try {
     const favoritesData = await Favorites.destroy({
       where: {
-        id: req.params.id,
+        favitem_id: req.body.id,
         user_id: req.session.user_id,
       },
     });

@@ -57,8 +57,9 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 ### Links
 
-• Deployed Application URL: https://jsrra.github.io/Booze-Hound/
-• Repository URL: https://github.com/Jsrra/Booze-Hound
+• Deployed Application URL: 
+    - 
+• Repository URL: https://github.com/ikaera/Project-2
 
 ## Credits
 
