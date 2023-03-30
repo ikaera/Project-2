@@ -65,8 +65,9 @@
   <h3>Saved items list:</h3>
 </section> --}}
 
-{{!-- <section class='saved-item-section'>
-  <h1>Your Saved items list:</h1>
+
+<section class='saved-item-section'>
+  <h1>Your Saved Items list:</h1>
   {{#each favItems}}
 
     <section class='listing'>
@@ -83,10 +84,9 @@
         <p>Description: {{listing.description}}</p>
         <p>Price: {{listing.price}}</p>
       </div>
-      {{! if we get the time this would be a great place to include an Update Listing }}
       <div class='col-md-4'>
-        <button class='btn btn-sm' data-id='{{listing.id}}'>
-          Remove from saved</button>
+        <button class='btn btn-sm saveRemoveBtn' data-id='{{listing.id}}'>
+          Remove From Saved Items</button>
       </div>
     </section>
   {{/each}}

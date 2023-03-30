@@ -15,11 +15,13 @@ router.post('/', async (req, res) => {
   }
 });
 
+// wouldn't this destroy the full favorites list and not just the individual favorite items?
+// I think this belongs in the favItemRoutes!
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const favoritesData = await Favorites.destroy({
       where: {
-        id: req.params.id,
+        favitem_id: req.body.id,
         user_id: req.session.user_id,
       },
     });

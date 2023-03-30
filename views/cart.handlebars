@@ -1,29 +1,33 @@
 {{!-- Nate --}}
-{{!-- {{#each listings as |disc| }} < --- iterate over items added to cart --}}
+{{!-- refactoring to closely match the saved items function --}}
+<section class="cart-item-section">
+    <h1>Your Shopping Cart</h1>
 
-<div class="row">
-    <div class="col-auto">
-        <h2>Hey there, {{User.name}}. Here's your shopping cart</h2>
-    </div>
-</div>
-<div class="row mb-4 listings">
-    <div class="col-md-5">
-        {{#if listing.cover_art}}
-        <img class="cover-art" src="{{listing.cover_art}}" alt="Cover Art for {{listing.album_title}} by {{listing.artist}}" />
-        {{else}}
-        <img class="cover-art" src="/img/listing-icon.png">
-        {{/if}}
-        <a href="/listing/{{listing.id}}">{{listing.artist}}</a>
-        <h2>{{listing.album_title}}</h2>
-        <p>By: {{listing.artist}}</p>
-        <p>Format: {{listing.format}}</p>
-        <p>Condition: {{listing.condition}}</p>
-        <p>Price: {{listing.price}}</p>
-        <p>Seller: {{listing.User.name}}</p>
+    {{#each cartItems}}
+
+    <div class="listing">
+        <img src="{{listing.cover_art}}" alt="Cover Art for {{listing.album_title}} by {{listing.artist}}">
+        <div class="listing-details">
+            <h4>{{listing.album_title}} by: {{listing.artist}}</h4>
+            <p>Format: {{listing.format}}</p>
+            <p>Price: {{listing.price}}</p>
+        </div>
+
+        <div class="col-md-4">
+            <button class="btn btn-sm cartRemoveBtn" data-id="{{listing.id}}">
+                Remove From Cart
+            </button>
+        </div>
     </div>
 
-    <div>
-      <button id="purchaseCart" class="btn btn-sm btn-danger" data-id="{{disc.id}}">Purchase</button>
+    {{/each}}
+
+    <div class="col-md-8">
+        <h2>Your Subtotal:</h2>
+        <button class="btn btn-sm cartPurchaseBtn" data-id="insertwaytoselectallcartitems">
+            Proceed to Checkout
+        </button>
     </div>
-</div>
-{{/each}}
+</section>
+
+<script src="/js/addtocart.js"></script>

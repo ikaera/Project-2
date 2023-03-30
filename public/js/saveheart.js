@@ -31,4 +31,32 @@ favoriteBtn.forEach((btn) => {
 });
 
 // delete btn
-// const deleteBtn = document.querySelector('');
+const deleteBtn = document.querySelectorAll('.delete-btn');
+
+const deleteHandler = async (event) => {
+  event.preventDefault();
+
+  // const favId = window.location.toString().split('/')[
+  //   window.location.toString().split('/').length - 1
+  // ];
+  const id = event.target.dataset.id;
+  console.log(id);
+
+  // if (id) {
+  const response = await fetch(`/api/favorites/${id}`, {
+    method: 'DELETE',
+    body: JSON.stringify({ id }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  const result = await response.json();
+  console.log('RESULT', result);
+  // if (response.ok) {
+  //   document.location.replace('/profile');
+  // } else {
+  //   alert(response.statusText);
+  // }
+};
+// };
+deleteBtn.forEach((btn) => {
+  btn.addEventListener('click', deleteHandler);
+});
