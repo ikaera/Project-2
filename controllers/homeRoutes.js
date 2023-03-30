@@ -97,11 +97,18 @@ router.get('/listing/:id', withAuth, async (req, res) => {
 });
 
 // this is the former /sell route, now loads the listing page with listing-details which needs to be adjusted to display less erroneous info
-router.get('/listing', withAuth, (req, res) => {
-  res.render('listing', {
-    logged_in: req.session.logged_in,
-  });
+router.get('/listing', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk( req.session.user_id, {
+      attributes: ["id", "name"]
+    });
+    res.render('listing', {
+      logged_in: req.session.logged_in,
+      user: userData.dataValues,
+    });
+  } catch(err) {}
 });
+  
 
 // route to POST listings
 router.post('/listings', withAuth, async (req, res) => {
@@ -195,13 +202,12 @@ router.get('/cassettes', withAuth, async (req, res) => {
 // loads the currently logged-in user profile, only getting listings with matching user_id
 /* router.get('/profile', withAuth, async (req, res) => {
   try {
-    const userListingData = await Listing.findAll({
-      where: {
-        user_id: req.session.user_id,
-      },
+    const userListingData = await User.findByPk( req.session.user_id, {
+      include: [{model: Listing}],
+      attributes: ["id", "name"]
     });
 
-    const listingData = userListingData.map((listing) =>
+    const listingData = userListingData.listings.map((listing) =>
       listing.get({ plain: true })
     );
     console.log(listingData);
@@ -209,6 +215,7 @@ router.get('/cassettes', withAuth, async (req, res) => {
     res.render('profile', {
       listingData,
       logged_in: req.session.logged_in,
+      user: userListingData.dataValues,
     });
   } catch (err) {
     console.log(err);
@@ -267,11 +274,11 @@ router.get('/myitems', withAuth, async (req, res) => {
     const favItems = favItemsData.map((item) => {
       return item.get({ plain: true });
     });
-    console.log(favItems);
 
     res.render('myitems', {
       favItems,
       logged_in: req.session.logged_in,
+      quantity: favItems.length,
     });
   } catch (err) {
     console.log(err);
