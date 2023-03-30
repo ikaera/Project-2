@@ -23,14 +23,14 @@ router.delete('/:id', withAuth, async (req, res) => {
     try {
         const cartData = await Cart.destroy({
             where: {
-                id: req.params.id,
+                cartitem_id: req.body.id,
                 user_id: req.session.user_id,
             },
         });
 
         if (!cartData) {
             res.status(400).json({
-                message: 'No saved item found with this ID!'
+                message: 'No cart item found with this ID!'
             });
             return;
         }
