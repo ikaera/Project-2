@@ -8,12 +8,9 @@ Profile page
 
  ((item.count.id))
 
-search bar functionality
- - to specified pages
-
-
  future develop
  - user profile clicks into their profile with list of all their disc listings
+ - search bar
 
 
 

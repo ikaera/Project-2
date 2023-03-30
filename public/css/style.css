@@ -263,7 +263,7 @@ textarea.input {
 
 .font-black {
     color: black;
-
+    margin-left: 73px;
 }
 
 .shop-cart {
@@ -499,6 +499,11 @@ table.mpitems tr td.seller_info {
   margin: 0 auto;
 }
 
+.log-page-profile {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+}
 .log-container {
   width: 100%;
   min-height: 100vh;
@@ -517,6 +522,42 @@ table.mpitems tr td.seller_info {
   position: relative;
 }
 
+.card-wrap-profile {
+  width: 560px;
+  background: rgb(239, 129, 129, 1);
+  border-radius: 10px;
+  position: relative;
+}
+
+.log-container-profile {
+  margin-left: 50px;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+}
+
+.profile-div {
+  display:inline
+}
+
+.listing {
+  display: inline-flex;
+}
+
+.title-profile-h3 {
+  width: 350px;
+}
+.img-profile {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 35px;
+  margin-right: 20px;
+}
 .pad-log {
   padding-left: 55px;
   padding-top: 55px;
