@@ -6,7 +6,7 @@
 
 const router = require('express').Router();
 const Listing = require('../../models/Listing');
-const { Cart } = require('../../models/Cart');
+const { Cart } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
 module.exports = router;

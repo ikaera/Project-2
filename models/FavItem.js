@@ -26,14 +26,17 @@ FavItem.init(
     description: {
       type: DataTypes.STRING,
     },
+
     condition: {
       type: DataTypes.ENUM('New', 'Good', 'Fair'),
       allowNull: false,
     },
+
     label: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    
     price: {
       type: DataTypes.INTEGER,
       allowNull: false,

@@ -37,30 +37,29 @@ Favorites.belongsTo(Listing, {
   foreignKey: 'favitem_id',
 });
 
-// will probably need more than this!!
-// needs specification???
-/* User.hasMany(Listing); */
-
-// needs specification???
-/* User.hasOne(Cart); */
+// refactoring these so they match Irakli's exactly
+User.hasMany(Cart, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
+});
 
 Cart.belongsTo(User, {
   foreignKey: 'user_id',
 });
 
-Cart.belongsToMany(Listing, {
-    through: CartItem
-});
-
 Listing.hasMany(Cart, {
-  foreignKey: 'listing_id',
+  foreignKey: 'cartitem_id',
   onDelete: 'CASCADE',
 });
 
-Cart.hasMany(CartItem, {
-  // cart info
-    foreignKey: 'cartitem_id',
+Cart.belongsTo(Listing, {
+  foreignKey: 'cartitem_id',
 });
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// why are FavItem and CartItem NEVER USED ANYWHERE?
+// can we get rid of those entirely? or is there missing CODE?
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 module.exports = { User, Listing, Favorites, FavItem, Cart, CartItem };
 
