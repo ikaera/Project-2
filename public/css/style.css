@@ -137,7 +137,10 @@ ol {
 
 .header-logo .logo img {
   display: block;
+  width: 128px;
+  height: 128px;
 }
+
 
 .header-search {
   padding: 15px 0px;
@@ -238,12 +241,12 @@ textarea.input{
 }
 
 .disc-listing {
-    background-color: #333;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
-.font-white {
-    color: white;
+.font-black {
+    color: black;
 }
 
 .shop-cart{
