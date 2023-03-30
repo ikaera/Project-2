@@ -1,17 +1,5 @@
-/* const Sequelize = require('sequelize');
-const sequelize = require('../config/connection');
-const CartItem = sequelize.define('cartItem', {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true
-    },
-    quantity: Sequelize.INTEGER
-});
-module.exports = CartItem; */
-
 const { Model, DataTypes } = require('sequelize');
+// why no third Sequelize here?! as opposed to FavItem?!
 const sequelize = require('../config/connection');
 
 class CartItem extends Model {}

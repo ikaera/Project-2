@@ -1,13 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
-// const bcrypt = require('bcrypt');
+// why is sequelize being required 3 different ways?
+// if that's helping things work... why? how? what?
 const Sequelize = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Favorites extends Model {
-  // checkPassword(loginPw) {
-  //   return bcrypt.compareSync(loginPw, this.password);
-  // }
-}
+class Favorites extends Model {}
 
 Favorites.init(
   {

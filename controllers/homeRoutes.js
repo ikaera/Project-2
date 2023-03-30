@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Listing, FavItem, Favorites } = require('../models');
+const { User, Listing, Favorites, FavItem, Cart, CartItem } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -13,6 +13,9 @@ router.get('/', async (req, res) => {
         },
         {
           model: Favorites,
+        },
+        {
+          model: Cart,
         },
       ],
     });
@@ -42,24 +45,26 @@ router.get('/', async (req, res) => {
 
 // get all Listings from a specific User
 router.get('/user/:id', withAuth, async (req, res) => {
-  // there is already a withAuth added to the get, does not need the if/else
-  // redesigning so that a User/:id gets LISTINGS for the user, not just Users for the User which made little sense
+  
   try {
-    const userListingData = await Listing.findAll({
-      where: {
-        user_id: req.params.id,
-      },
+    const userListingData = await User.findByPk(req.params.id, {
+      include: [
+        {
+          model: Listing,
+        },
+      ],
+      attributes: ['id', 'name']
     });
 
-    const userListings = userListingData.map((listing) =>
-      listing.get({ plain: true })
-    );
+    const userListings = userListingData.listings.map((listing) => listing.get({ plain: true }));
     console.log(userListings);
 
-    res.render('user', {
+    res.render('single-user', {
       userListings,
       logged_in: req.session.logged_in,
+      user: userListingData.dataValues,
     });
+
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -195,7 +200,7 @@ router.get('/cassettes', withAuth, async (req, res) => {
 });
 
 // loads the currently logged-in user profile, only getting listings with matching user_id
-router.get('/profile', withAuth, async (req, res) => {
+/* router.get('/profile', withAuth, async (req, res) => {
   try {
     const userListingData = await User.findByPk( req.session.user_id, {
       include: [{model: Listing}],
@@ -208,7 +213,33 @@ router.get('/profile', withAuth, async (req, res) => {
     console.log(listingData);
 
     res.render('profile', {
-      /* this has to be matched in the handlebar references!!! */
+      listingData,
+      logged_in: req.session.logged_in,
+      user: userListingData.dataValues,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+}); */
+
+// alternative attempt at /profile using User again!
+// should work!
+router.get('/profile', withAuth, async (req, res) => {
+  try {
+    const userListingData = await User.findByPk(req.session.user_id, {
+      include: [
+        {
+          model: Listing,
+        },
+      ],
+      attributes: ['id', 'name']
+    });
+
+    const listingData = userListingData.listings.map((listing) => listing.get({ plain: true }));
+    console.log(listingData);
+
+    res.render('profile', {
       listingData,
       logged_in: req.session.logged_in,
       user: userListingData.dataValues,
@@ -233,12 +264,6 @@ router.get('/login', (req, res) => {
 // My saved itmes(Favitems and Favorites)
 router.get('/myitems', withAuth, async (req, res) => {
   try {
-    // const favItemsData = await FavItem.findAll({
-    //   where: {
-    //     user_id: req.session.favitem_id,
-    //   },
-    // });
-    // or
     const favItemsData = await Favorites.findAll({
       where: {
         user_id: req.session.user_id,
@@ -251,10 +276,33 @@ router.get('/myitems', withAuth, async (req, res) => {
     });
 
     res.render('myitems', {
-      /* this has to be matched in the handlebar references!!! */
       favItems,
       logged_in: req.session.logged_in,
       quantity: favItems.length,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/cart', withAuth, async (req, res) => {
+  try {
+    const cartItemsData = await Cart.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+      include: [Listing],
+    });
+
+    const cartItems = cartItemsData.map((item) => {
+      return item.get({ plain: true });
+    });
+    console.log(cartItems);
+
+    res.render('cart', {
+      cartItems,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.log(err);
