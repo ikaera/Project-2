@@ -104,7 +104,7 @@ router.get('/vinyls', withAuth, async (req, res) => {
 
     
     res.render('vinyls', {
-      ...vinyls,
+      vinyls,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -127,7 +127,7 @@ router.get('/cds', withAuth, async (req, res) => {
     console.log(cds);
 
     res.render('cds', {
-      ...cds,
+      cds,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -150,7 +150,7 @@ router.get('/cassettes', withAuth, async (req, res) => {
     console.log(cassettes);
 
     res.render('cassettes', {
-      ...cassettes,
+      cassettes,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -194,5 +194,17 @@ router.get('/login', (req, res) => {
 });
 
 // logout route appears to be missing?
+
+router.get('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.redirect('/');
+      /* res.status(204).end(); */
+    });
+  } else {
+    res.redirect('/');
+    /* res.status(404).end(); */
+  }
+});
 
 module.exports = router;
