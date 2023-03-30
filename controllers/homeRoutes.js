@@ -254,12 +254,6 @@ router.get('/login', (req, res) => {
 // My saved itmes(Favitems and Favorites)
 router.get('/myitems', withAuth, async (req, res) => {
   try {
-    // const favItemsData = await FavItem.findAll({
-    //   where: {
-    //     user_id: req.session.favitem_id,
-    //   },
-    // });
-    // or
     const favItemsData = await Favorites.findAll({
       where: {
         user_id: req.session.user_id,
@@ -273,8 +267,31 @@ router.get('/myitems', withAuth, async (req, res) => {
     console.log(favItems);
 
     res.render('myitems', {
-      /* this has to be matched in the handlebar references!!! */
       favItems,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/cart', withAuth, async (req, res) => {
+  try {
+    const cartItemsData = await Cart.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+      include: [Listing],
+    });
+
+    const cartItems = cartItemsData.map((item) => {
+      return item.get({ plain: true });
+    });
+    console.log(cartItems);
+
+    res.render('cart', {
+      cartItems,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
