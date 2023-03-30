@@ -17,11 +17,13 @@
       <p>{{disc.description}}</p>
     </div>
     <div>
-      <button
-        id='addFavoriteBtn'
-        class='btn btn-sm btn-danger addFavoriteBtn'
-        data-id='{{disc.id}}'
-      >Save To Favorites</button>
+      {{#if_faved disc.favorites userId}}
+        <button
+          id='addFavoriteBtn'
+          class='btn btn-sm btn-danger addFavoriteBtn'
+          data-id='{{disc.id}}'
+        >Save To Favorites</button>
+      {{/if_faved}}
     </div>
     <div>
       <button

@@ -29,3 +29,6 @@ const favoriteFormHandler = async (event) => {
 favoriteBtn.forEach((btn) => {
   btn.addEventListener('click', favoriteFormHandler);
 });
+
+// delete btn
+const deleteBtn = document.querySelector('');

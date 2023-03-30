@@ -11,20 +11,28 @@ router.get('/', async (req, res) => {
           model: User,
           attributes: ['name'],
         },
+        {
+          model: Favorites,
+        },
       ],
     });
+
+    // const listingResponse = dbListingData.get({ plain: true });
+    // console.log(listingResponse);
 
     const listings = dbListingData.map((listing) =>
       listing.get({ plain: true })
     );
+    // console.log(JSON.stringify(listings, null, 4));
 
     // all of the site visit info was in the wrong place!
     // we only need a unique visitor counter for specific listings, not to display randomly on the homepage
     // we need to find a way to set up the visiter tracker outside of the get routes and call it into the get routes so that it can be simplified for practical usage
-
+    console.log('ID', req.session.user_id);
     res.render('homepage', {
       listings,
       logged_in: req.session.logged_in,
+      userId: req.session.user_id,
     });
   } catch (err) {
     console.log(err);
