@@ -49,4 +49,4 @@ removeBtn.forEach((btn) => {
 }); */
 
 // need to add cart purchase set up
-const checkoutBtn = document.querySelectorAll('.cartPurchaseBtn');
+/* const checkoutBtn = document.querySelectorAll('.cartPurchaseBtn'); */
