@@ -278,7 +278,7 @@ router.get('/myitems', withAuth, async (req, res) => {
     res.render('myitems', {
       favItems,
       logged_in: req.session.logged_in,
-      quantity: favItems.length,
+      favquantity: favItems.length,
     });
   } catch (err) {
     console.log(err);
@@ -303,7 +303,7 @@ router.get('/mycart', withAuth, async (req, res) => {
     res.render('mycart', {
       cartItems,
       logged_in: req.session.logged_in,
-      /* quantity: cartItems.length, */
+      cartquantity: cartItems.length,
     });
   } catch (err) {
     console.log(err);

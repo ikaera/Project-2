@@ -21,7 +21,7 @@
                 </div>
                 {{!-- if we get the time this would be a great place to include an Update Listing --}}
                 <div class="col-md-4">
-                    <button class="btn btn-sm btn-danger" data-id="{{listing.id}}"> Delete Listing</button>
+                    <button class="btn btn-sm btn-danger listingDeleteBtn" data-id="{{listing.id}}"> Delete Listing</button>
                 </div>
             </section>
             {{/each}}
@@ -39,4 +39,5 @@
     {{!-- #ifEq does not work, would need separate npm package I can't find
     #with does not work how I thought it did, need to adjust all other pathways --}}
 
-    <script src="/js/profile.js"></script>
+<script src="/js/profile.js"></script>
+<script src="/js/deletelisting.js"></script>
