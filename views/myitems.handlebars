@@ -1,12 +1,7 @@
 {{! Irakli }}
 
-{{!-- <section class='flex-row justify-center'>
-  <h2>Hello {{user.name}} </h2>
-  <h3>Saved items list:</h3>
-</section> --}}
-
 <section class='saved-item-section'>
-  <h1>Your Saved items list:</h1>
+  <h1>Your Saved Items list:</h1>
   {{#each favItems}}
 
     <section class='listing'>
@@ -23,20 +18,12 @@
         <p>Description: {{listing.description}}</p>
         <p>Price: {{listing.price}}</p>
       </div>
-      {{! if we get the time this would be a great place to include an Update Listing }}
-      {{!-- <div class='col-md-4 delete-btn'>
-        <button class='btn btn-sm' data-id='{{id}}'>
-          Remove from saved</button>
-      </div> --}}
+      <div class='col-md-4'>
+        <button class='btn btn-sm saveRemoveBtn' data-id='{{listing.id}}'>
+          Remove From Saved Items</button>
+      </div>
     </section>
   {{/each}}
 </section>
-{{!-- <div class='row mt-4'>
-  {{if loggedIn}}
-  {{> vinyl-details}}
-
-  <a href="/login"> Log in, please, to view saved itmes</a>
-  {{/if}}
-</div> --}}
 
 <script src='/js/saveheart.js'></script>
