@@ -45,20 +45,20 @@ What are the steps required to install your project? Provide a step-by-step desc
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+<!-- Provide instructions and examples for use. Include screenshots as needed.
 
 To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
     ```md
     ![alt text](assets/images/screenshot.png)
-    ```
+    ``` -->
 ### Short Demo Animation
-![Deployed Website](./assets/images/animation.gif)
+![Deployed Website](./assets/images/)
 
 ### Links
 
 • Deployed Application URL: 
-    - 
+    - ...
 • Repository URL: https://github.com/ikaera/Project-2
 
 ## Credits
