@@ -72,8 +72,8 @@ router.get('/listing/:id', withAuth, async (req, res) => {
       const listing = dbListingData.get({ plain: true });
 
       res.render('single-listing', { 
-        ...listing, 
-        logged_in: req.session.logged_in 
+        listing, 
+        logged_in: req.session.logged_in, 
       });
     } catch (err) {
       console.log(err);
@@ -87,6 +87,29 @@ router.get('/listing', withAuth, (req, res) => {
   res.render('listing', {
     logged_in: req.session.logged_in,
   });
+});
+
+// route to POST listings
+router.post('/listings', withAuth, async (req, res) => {
+  
+  try {
+    const listingData = await Listing.create({
+      ...req.body,
+      logged_in: req.session.logged_in,
+    });
+
+    const newListing = listingData.get({ plain: true });
+    console.log(newListing);
+
+    res.render('single-listing', {
+      newListing,
+      logged_in: req.session.logged_in,
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 // this needs a try where it specifically finds All where format: vinyl
