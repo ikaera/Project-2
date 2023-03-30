@@ -1,4 +1,4 @@
-const listing = require('../models/listing');
+/* const listing = require('../models/listing');
 
 exports.getlistings = (req, resp) => {
     listing.findAll()
@@ -113,7 +113,7 @@ exports.getCheckout = (req, resp) => {
         pageTitle: 'Checkout',
         path: '/checkout'
     });
-};
+}; */
 
 exports.getOrders = (req, resp) => {
     req.user.getOrders({include: ['listings']})
