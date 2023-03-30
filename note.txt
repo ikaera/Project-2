@@ -1,7 +1,4 @@
-Profile page
- - background color -> white
- - text color -> black
- - input text -> black
+
  -optional -> beautify 
  ----also cart/saved -> table template
  ----remove table header on pages like profile..etc check for more

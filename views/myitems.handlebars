@@ -1,3 +1,63 @@
+   <table class="table_block mpitems push_down table_responsive">
+      <thead>
+        <tr>
+          <th class="info_head" colspan="2">Disc List</th>
+          <th class="seller_head">Users</th>
+          <th class="price_head">$</th>
+          <th class="format_head">Vinyl, CD, Cassettes</th>
+          {{!-- <th class="add_save">Save</th> --}}
+          <th class="add_save">Remove</th>
+          <th class="add_cart">Purchase</th>
+        </tr>
+      </thead>      
+      <tbody>
+        <tr class="disc_item">
+{{#each favItems}}
+          <td class="disc_img">
+          {{#if listing.cover_art}}
+            <img class="cover-art" src="{{listing.cover_art}}" alt="{{listing.artist}}" />
+                {{else}}
+                <img class="cover-art" src="/img/disc-icon.png">
+            {{/if}}
+            {{!-- <a href="/listing/{{disc.id}}">{{disc.artist}}</a> --}}
+          </td>
+          <td class="disc_desc">
+            <a href="/listing/{{listing.id}}"><strong>{{listing.album_title}}</strong></a>
+            <br>
+            <p>Artist: {{listing.artist}}</p>
+            <br>
+            <p>Condition: {{listing.condition}}</p>
+            <br>
+            <p>Description: {{listing.description}}</p>
+          </td>
+          <td class="seller_info">Seller: {{user.name}}</td>
+          <td class="item_price">Price: ${{listing.price}}</td>
+          <td class="item_format">Format: {{listing.format}}</td>
+          {{!-- <td class="save_button">
+            <button id="addFavoriteBtn" 
+            class="btn btn-sm btn-danger"
+            data-id="{{disc.id}}">Save to Favorites</button>
+          </td> --}}
+          <td class="remove_button">
+            <button id="rmFavBtn"
+            class="btn btn-sm btn-danger"
+            data-id="{{disc.id}}">Remove from Saved</button>
+          </td>
+          <td class="cart_button">
+            <button id="addCartBtn"
+            class="btn btn-sm btn-danger"
+            data-id="{{disc.id}}">Add to Cart</button>
+          </td>
+        </tr>
+{{/each}}
+      </tbody>
+    </table>
+
+
+
+
+
+
 {{! Irakli }}
 
 {{!-- <section class='flex-row justify-center'>
@@ -5,7 +65,7 @@
   <h3>Saved items list:</h3>
 </section> --}}
 
-<section class='saved-item-section'>
+{{!-- <section class='saved-item-section'>
   <h1>Your Saved items list:</h1>
   {{#each favItems}}
 
@@ -30,7 +90,7 @@
       </div>
     </section>
   {{/each}}
-</section>
+</section> --}}
 {{!-- <div class='row mt-4'>
   {{if loggedIn}}
   {{> vinyl-details}}
