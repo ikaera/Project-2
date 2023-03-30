@@ -173,12 +173,12 @@ ol {
 .input {
   height: 40px;
   padding: 0px 15px;
-  border: 1px solid #E4E7ED;
-  background-color: #FFF;
+  border: 1px solid #e4e7ed;
+  background-color: #fff;
   width: 100%;
 }
 
-textarea.input{
+textarea.input {
   padding: 16px;
   min-height: 92px;
 }
@@ -237,7 +237,23 @@ textarea.input{
 }
 
 .listing-section {
-    background-color: white;
+  background-color: white;
+}
+
+.justify-space-between-md {
+  justify-content: space-between;
+  background-color: white;
+}
+
+.col-md-5 {
+  flex: 0 0 41.66667%;
+  max-width: 41.66667%;
+  background-color: white;
+}
+
+.mb-4 {
+  margin-bottom: 1.375rem;
+  background-color: white;
 }
 
 .disc-listing {
@@ -247,9 +263,10 @@ textarea.input{
 
 .font-black {
     color: black;
+
 }
 
-.shop-cart{
+.shop-cart {
   position: relative;
 }
 
@@ -262,21 +279,27 @@ textarea.input{
 } */
 
 .row-list {
-    display: block;
-    /* flex-wrap: wrap;
+  display: block;
+  /* flex-wrap: wrap;
     flex-direction: row; */
-    margin-left: -150px;
-    margin-right: -200px;
-    background-color: blueviolet;
+  margin-left: -150px;
+  margin-right: -200px;
+  background-color: blueviolet;
 }
 
 .list-home {
-  display:block;
-  background-color:greenyellow;
+  display: block;
+  background-color: greenyellow;
 }
 .cover-art {
   width: 100px;
   height: 100px;
+}
+
+.saved-item-section {
+  background-color: #fff;
+  padding: 15px;
+  margin: 25px;
 }
 
 #footer {
@@ -314,9 +337,9 @@ textarea.input{
   color: #d10024;
 }
 
-.listings {
-  /*todo*/
-}
+/* .listings { */
+/*todo*/
+/* } */
 
 .container {
   width: 100%;
@@ -350,7 +373,6 @@ div {
   display: block;
 }
 
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -378,7 +400,8 @@ table.mpitems tr:last-child {
   border-bottom: none;
 }
 
-table.table_block thead tr, table.table_block tfoot tr {
+table.table_block thead tr,
+table.table_block tfoot tr {
   background: grey;
   border-bottom: 1px solid grey;
 }
@@ -400,7 +423,7 @@ table.mpitems th {
   background: rgb(231, 96, 96);
 }
 
-table.table_block th, 
+table.table_block th,
 table.table_block thead td,
 table.table_block tfoot td {
   text-align: left;
@@ -452,7 +475,8 @@ table.mpitems tr td.seller_info {
   width: 20%;
 }
 
-#main_wrapper .hide-desktop, .hide-desktop {
+#main_wrapper .hide-desktop,
+.hide-desktop {
   display: none;
 }
 
@@ -466,7 +490,8 @@ table.mpitems tr td.seller_info {
   white-space: nowrap;
   text-align: center;
 }
-@media only screen and (max-width: 1201px) {}
+@media only screen and (max-width: 1201px) {
+}
 
 @media only screen and (max-width: 991px) {
   .header-acc .menu-toggle {
