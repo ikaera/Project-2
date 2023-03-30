@@ -1,0 +1,23 @@
+Profile page
+ - background color -> white
+ - text color -> black
+ - input text -> black
+ -optional -> beautify
+
+ POST sell page,
+  - fix to be able to list new items
+
+Profile page
+ - button to link to sell page
+
+Profile.hbs
+ - {{user.name}} not showing up
+listing.hbs
+ - {{user.name}} not showing up
+
+search bar functionality
+ - to specified pages
+
+
+ future develop
+ - user profile clicks into their profile with list of all their disc listings

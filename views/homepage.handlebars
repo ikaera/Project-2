@@ -46,7 +46,8 @@
             {{!-- <a href="/listing/{{disc.id}}">{{disc.artist}}</a> --}}
           </td>
           <td class="disc_desc">
-            <strong>{{disc.album_title}}</strong>
+            <a href="/listing/{{disc.id}}"><strong>{{disc.album_title}}</strong></a>
+            {{!-- <strong>{{disc.album_title}}</strong> --}}
             <br>
             <p>Artist: {{disc.artist}}</p>
             <br>
@@ -54,7 +55,7 @@
             <br>
             <p>Description: {{disc.description}}</p>
           </td>
-          <td class="seller_info">Seller:{{user.name}}</td>
+          <td class="seller_info">Seller: {{user.name}}</td>
           <td class="item_price">Price: ${{disc.price}}</td>
           <td class="item_format">Format: {{disc.format}}</td>
           <td class="save_button">
@@ -70,3 +71,4 @@
         </tr>
 {{/each}}
       </tbody>
+
