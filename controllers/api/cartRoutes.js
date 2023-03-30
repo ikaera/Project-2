@@ -1,4 +1,4 @@
-const router = require('express').Router();
+/* const router = require('express').Router();
 const { cart } = require('../../models');
 const withAuth = require('../../utils/auth');
 
@@ -16,4 +16,4 @@ router.get('/listing/:lisId', shopController.getProduct);
 router.post('/cart-delete-item', shopController.postCartDeleteProduct);
 router.post('/create-order', shopController.postOrder);
 
-module.exports = router;
+module.exports = router; */
