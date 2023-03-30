@@ -72,8 +72,8 @@ router.get('/listing/:id', withAuth, async (req, res) => {
       const listing = dbListingData.get({ plain: true });
 
       res.render('single-listing', { 
-        ...listing, 
-        logged_in: req.session.logged_in 
+        listing, 
+        logged_in: req.session.logged_in, 
       });
     } catch (err) {
       console.log(err);
@@ -87,6 +87,29 @@ router.get('/listing', withAuth, (req, res) => {
   res.render('listing', {
     logged_in: req.session.logged_in,
   });
+});
+
+// route to POST listings
+router.post('/listings', withAuth, async (req, res) => {
+  
+  try {
+    const listingData = await Listing.create({
+      ...req.body,
+      logged_in: req.session.logged_in,
+    });
+
+    const newListing = listingData.get({ plain: true });
+    console.log(newListing);
+
+    res.render('single-listing', {
+      newListing,
+      logged_in: req.session.logged_in,
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 // this needs a try where it specifically finds All where format: vinyl
@@ -104,7 +127,7 @@ router.get('/vinyls', withAuth, async (req, res) => {
 
     
     res.render('vinyls', {
-      ...vinyls,
+      vinyls,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -127,7 +150,7 @@ router.get('/cds', withAuth, async (req, res) => {
     console.log(cds);
 
     res.render('cds', {
-      ...cds,
+      cds,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -150,7 +173,7 @@ router.get('/cassettes', withAuth, async (req, res) => {
     console.log(cassettes);
 
     res.render('cassettes', {
-      ...cassettes,
+      cassettes,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -194,5 +217,17 @@ router.get('/login', (req, res) => {
 });
 
 // logout route appears to be missing?
+
+router.get('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.redirect('/');
+      /* res.status(204).end(); */
+    });
+  } else {
+    res.redirect('/');
+    /* res.status(404).end(); */
+  }
+});
 
 module.exports = router;
