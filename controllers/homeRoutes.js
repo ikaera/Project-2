@@ -138,6 +138,12 @@ router.get('/vinyls', withAuth, async (req, res) => {
       where: {
         format: 'vinyl',
       },
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
     });
 
     const vinyls = vinylData.map((listing) => listing.get({ plain: true }));
@@ -160,6 +166,12 @@ router.get('/cds', withAuth, async (req, res) => {
       where: {
         format: 'CD',
       },
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
     });
 
     const cds = cdData.map((listing) => listing.get({ plain: true }));
@@ -182,6 +194,12 @@ router.get('/cassettes', withAuth, async (req, res) => {
       where: {
         format: 'cassette',
       },
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
     });
 
     const cassettes = cassetteData.map((listing) =>
