@@ -251,6 +251,10 @@ textarea.input {
   background-color: white;
 }
 
+.col-md-8-mycart {
+  display: contents;
+}
+
 .mb-4 {
   margin-bottom: 1.375rem;
   background-color: white;
@@ -261,12 +265,32 @@ textarea.input {
     color: black;
 }
 
+.disc-listing-single-user {
+  background-color: white;
+  color: black;
+  margin-left: 0px;
+}
+
 .font-black {
     color: black;
     margin-left: 73px;
 }
 
 .shop-cart {
+  position: relative;
+}
+
+.total-cart {
+  float: right;
+  position: relative;
+  left: -100px;
+  top: 180px;
+}
+
+.cartPurchaseBtn {
+  float: right;
+  bottom: -210px;
+  right: -20px;
   position: relative;
 }
 
@@ -390,6 +414,10 @@ table.table_block {
   margin-bottom: 28px;
 }
 
+table.table_block-profile {
+  margin-bottom: 1040px;
+}
+
 thead {
   display: table-header-group;
   vertical-align: middle;
@@ -467,7 +495,7 @@ td {
 }
 
 table.mpitems tr td.disc_desc {
-  word-break: break-word;
+  /* word-break: break-word; */
   max-width: 500px;
 }
 
@@ -581,7 +609,7 @@ table.mpitems tr td.seller_info {
 }
 
 .log-title {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Montserrat', sans-serif;
   font-size: 30px;
   color: black;
   line-height: 1.2;
@@ -596,7 +624,7 @@ table.mpitems tr td.seller_info {
 }
 
 .text {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   color: black;
   line-height: 1.4;
@@ -626,7 +654,7 @@ table.mpitems tr td.seller_info {
 } */
 
 .input-here {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Montserrat', sans-serif;
   color: black;
   line-height: 1.2;
   font-size: 18px;
@@ -652,7 +680,7 @@ button {
 }
 
 .login-button {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   color: white;
   line-height: 1.2;
