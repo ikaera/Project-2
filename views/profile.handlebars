@@ -37,17 +37,19 @@
                             <br>
                             <p>Description: {{listing.description}}</p>
                         </td>
-                        <td class="seller_info">Seller: {{user.name}}</td>
+                        {{!-- it's already the logged in user's profile, only their own listings will show up here so displaying user.name isn't necessary under the seller thing --}}
+                        {{!-- <td class="seller_info">Seller: {{user.name}}</td> --}}
                         <td class="item_price">Price: ${{listing.price}}</td>
                         <td class="item_format">Format: {{listing.format}}</td>
                         <td class="remove_button">
                             <button id="rmListBtn" class="btn btn-sm btn-danger listingDeleteBtn"
                                 data-id="{{listing.id}}">Remove Listing</button>
                         </td>
-                        <td class="cart_button">
+                        {{!-- this is the seller's own listings, they would not need the ability to add their own listing to their cart --}}
+                        {{!-- <td class="cart_button">
                             <button id="plusCartBtn" class="btn btn-sm btn-danger addCartBtn"
                                 data-id="{{listing.id}}">Add to Cart</button>
-                        </td>
+                        </td> --}}
                     </tr>
                     {{/each}}
                 </tbody>

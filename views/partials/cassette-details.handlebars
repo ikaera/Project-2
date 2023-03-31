@@ -34,15 +34,18 @@
           <td class="item_format">Format: {{disc.format}}</td>
           <td class="save_button">
             <button id="addFavoriteBtn" 
-            class="btn btn-sm btn-danger"
+            class="btn btn-sm btn-danger addFavoriteBtn"
             data-id="{{disc.id}}">Save to Favorites</button>
           </td>
           <td class="cart_button">
             <button id="addCartBtn"
-            class="btn btn-sm btn-danger"
+            class="btn btn-sm btn-danger addCartBtn"
             data-id="{{disc.id}}">Add to Cart</button>
           </td>
         </tr>
 {{/each}}
       </tbody>
     </table>
+
+    <script src="/js/saveheart.js"></script>
+    <script src="/js/addtocart.js"></script>

@@ -39,7 +39,8 @@
                     <br>
                     <p>Description: {{listing.description}}</p>
                 </td>
-                <td class="seller_info">Seller: {{user.name}}</td>
+                {{!-- <td class="seller_info">Seller: {{user.name}}</td> --}}
+                {{!-- single-user only showing listings for a specific seller already, so showing seller with user name is not necessary here either --}}
                 <td class="item_price">Price: ${{listing.price}}</td>
                 <td class="item_format">Format: {{listing.format}}</td>
                 <td class="save_button">
@@ -78,3 +79,5 @@
     {{/each}} --}}
 
     <script src="/js/profile.js"></script>
+    <script src="/js/saveheart.js"></script>
+    <script src="/js/addtocart.js"></script>
