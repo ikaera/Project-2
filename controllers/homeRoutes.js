@@ -287,12 +287,19 @@ router.get('/myitems', withAuth, async (req, res) => {
       where: {
         user_id: req.session.user_id,
       },
-      include: [Listing],
+      include: [
+        {
+          model: Listing,
+          include: [User],
+        }
+      ],
     });
 
     const favItems = favItemsData.map((item) => {
       return item.get({ plain: true });
     });
+
+    console.log(JSON.stringify(favItems, null, 4));
 
     res.render('myitems', {
       favItems,
@@ -311,7 +318,12 @@ router.get('/mycart', withAuth, async (req, res) => {
       where: {
         user_id: req.session.user_id,
       },
-      include: [Listing],
+      include: [
+        {
+          model: Listing,
+          include: [User],
+        }
+      ],
     });
 
     const cartItems = cartItemsData.map((item) => {
