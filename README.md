@@ -58,7 +58,8 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 ### Links
 
 • Deployed Application URL: 
-    - ...
+    https://serene-forest-09402.herokuapp.com/
+    
 • Repository URL: https://github.com/ikaera/Project-2
 
 ## Credits
