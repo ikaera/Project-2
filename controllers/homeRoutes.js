@@ -85,6 +85,7 @@ router.get('/listing/:id', withAuth, async (req, res) => {
     });
 
     const listing = dbListingData.get({ plain: true });
+    console.log(listing);
 
     res.render('single-listing', {
       listing,
