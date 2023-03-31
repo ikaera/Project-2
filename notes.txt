@@ -1,0 +1,64 @@
+ main.handlebars
+ 
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discs Exchange</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/jass.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+</head>
+
+
+<body>
+    <header>
+        <h1> Welcome to Disc Exchanges</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Vinyl</a></li>
+            <li><a href="#">CD</a></li>
+            <li><a href="/sell">Sell</a></li>
+        {{#if loggedIn}}
+        <button id="logout" class="btn-no-style">Logout</button>
+        {{else}}
+        <a href="/login">Login</a>
+        {{/if}}
+            <li></li>
+        </ul>
+    </nav>
+
+    <main>
+        <aside>
+            <h2>Purchase or Sell</h2>
+        </aside>
+        <div class="listing">
+            {{{body}}}
+        </div>
+    </main>
+    {{#if loggedIn}}
+    <script src="/public/js/logout.js"></script>
+    {{/if}}
+</body>
+
+</html>
+
+
+
+todo:
+
+Make Listing Prettier!
+ -Artist (bold, nice)
+ -Album Title Under the Artist
+ -Bigger Font
+ -More info, creation/release date/seller info
+
+resolve profile
+
+resolve searchbar, heart, shopping cart 
+
+resolve logout

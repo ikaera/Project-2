@@ -1,34 +1,101 @@
 {{!-- Nate --}}
 {{!-- refactoring to closely match the saved items function --}}
-<section class="cart-item-section">
-    <h1>Your Shopping Cart</h1>
+{{!-- <div class="row disc-listing">
+    <div class="col-auto disc-listing"> --}}
+        <section class="cart-item-section">
+            <h1>Your Shopping Cart</h1>
+            <br>
 
-    {{#each cartItems}}
+            <table class="table_block mpitems push_down table_responsive">
+                <thead>
+                    <tr>
+                        <th class="info_head" colspan="2">Disc List</th>
+                        <th class="seller_head">Users</th>
+                        <th class="price_head">$</th>
+                        <th class="format_head">Vinyl, CD, Cassettes</th>
+                        {{!-- <th class="add_save">Save</th> --}}
+                        <th class="add_save">Remove</th>
+                        {{!-- <th class="add_cart">Purchase</th> --}}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="disc_item">
+                        {{#each cartItems}}
+                        <td class="disc_img">
+                            {{#if listing.cover_art}}
+                            <img class="cover-art" src="{{listing.cover_art}}" alt="{{listing.artist}}" />
+                            {{else}}
+                            <img class="cover-art" src="/img/disc-icon.png">
+                            {{/if}}
+                            {{!-- <a href="/listing/{{disc.id}}">{{disc.artist}}</a> --}}
+                        </td>
+                        <td class="disc_desc">
+                            <a href="/listing/{{listing.id}}"><strong>{{listing.album_title}}</strong></a>
+                            <br>
+                            <p>Artist: {{listing.artist}}</p>
+                            <br>
+                            <p>Condition: {{listing.condition}}</p>
+                            <br>
+                            <p>Description: {{listing.description}}</p>
+                        </td>
+                        <td class="seller_info">Seller: {{user.name}}</td>
+                        <td class="item_price">Price: ${{listing.price}}</td>
+                        <td class="item_format">Format: {{listing.format}}</td>
+                        <td class="remove_button">
+                            <button id="cartRemoveBtn" class="btn btn-sm btn-danger cartRemoveBtn"
+                                data-id="{{listing.id}}">Remove From Cart</button>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            <div class="col-md-8-mycart">
+                <h2 class="total-cart">Your Subtotal:</h2>
+                <div>
+                <button id="cartPurchaseBtn" class="btn btn-sm btn-danger cartPurchaseBtn"
+                    data-id="{{listing.id}}">Proceed
+                    to
+                    Checkout</button>
+                </div>
+            </div>
+            </table>
+        </section>
 
-    <div class="listing">
-        <img src="{{listing.cover_art}}" alt="Cover Art for {{listing.album_title}} by {{listing.artist}}">
-        <div class="listing-details">
-            <h4>{{listing.album_title}} by: {{listing.artist}}</h4>
-            <p>Format: {{listing.format}}</p>
-            <p>Price: {{listing.price}}</p>
+
+
+
+
+
+
+
+
+
+
+        {{!-- {{#each cartItems}} --}}
+
+        {{!-- <div class="listing">
+            <img src="{{listing.cover_art}}" alt="Cover Art for {{listing.album_title}} by {{listing.artist}}">
+            <div class="listing-details">
+                <h4>{{listing.album_title}} by: {{listing.artist}}</h4>
+                <p>Format: {{listing.format}}</p>
+                <p>Price: {{listing.price}}</p>
+            </div>
+
+            <div class="col-md-4">
+                <button class="btn btn-sm cartRemoveBtn" data-id="{{listing.id}}">
+                    Remove From Cart
+                </button>
+            </div>
         </div>
 
-        <div class="col-md-4">
-            <button class="btn btn-sm cartRemoveBtn" data-id="{{listing.id}}">
-                Remove From Cart
+        {{/each}}
+
+        <div class="col-md-8">
+            <h2>Your Subtotal:</h2>
+            <button class="btn btn-sm cartPurchaseBtn" data-id="insertwaytoselectallcartitems">
+                Proceed to Checkout
             </button>
         </div>
-    </div>
+        </section> --}}
 
-    {{/each}}
-
-    <div class="col-md-8">
-        <h2>Your Subtotal:</h2>
-        <button class="btn btn-sm cartPurchaseBtn" data-id="insertwaytoselectallcartitems">
-            Proceed to Checkout
-        </button>
-    </div>
-</section>
-
-<script src="/js/addtocart.js"></script>
-<script src="/js/removefromcart.js"></script>
+        <script src="/js/addtocart.js"></script>
+        <script src="/js/removefromcart.js"></script>
