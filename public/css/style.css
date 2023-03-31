@@ -251,8 +251,12 @@ textarea.input {
   background-color: white;
 }
 
-.col-md-8-mycart {
-  display: contents;
+.mycart {
+  position: relative;
+  display:block;
+  width: 150px;
+  height: 100px;
+  bottom: -28px;
 }
 
 .mb-4 {
@@ -280,19 +284,19 @@ textarea.input {
   position: relative;
 }
 
-.total-cart {
-  float: right;
+/* .total-cart { */
+  /* float: right;
   position: relative;
   left: -100px;
-  top: 180px;
-}
+  top: 180px; */
+/* } */
 
-.cartPurchaseBtn {
-  float: right;
+/* .cartPurchaseBtn { */
+  /* float: right;
   bottom: -210px;
   right: -20px;
-  position: relative;
-}
+  position: relative; */
+/* } */
 
 /* .disc-body {
   position: absolute;
