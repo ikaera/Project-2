@@ -3,7 +3,7 @@ const removeBtn = document.querySelectorAll('.cartRemoveBtn');
 const deleteHandler = async (event) => {
     event.preventDefault();
 
-    const id = event.target.dataset.id;
+    const id = event.currentTarget.dataset.id;
     console.log(id);
 
     const response = await fetch(`/api/cart/${id}`, {
@@ -12,8 +12,19 @@ const deleteHandler = async (event) => {
         headers: { 'Content-Type': 'application/json' },
     });
 
-    const result = await response.json();
-    console.log('RESULT', result);
+    if (response.ok) {
+        /* console.log('trying to delete')
+        setTimeout(() => {
+            document.location.replace('/mycart');
+        }, 3000); */
+        document.location.reload();
+    } else {
+        alert(response.statusText);
+    }
+
+    /* const result = await response.json();
+    console.log('RESULT', result); */
+    
 };
 
 removeBtn.forEach((btn) => {
