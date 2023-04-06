@@ -326,8 +326,12 @@ router.get('/mycart', withAuth, async (req, res) => {
       ],
     });
 
+    let sum = 0
+
     const cartItems = cartItemsData.map((item) => {
-      return item.get({ plain: true });
+      const result = item.get({ plain: true });
+      sum += result.listing.price
+      return result;
     });
     console.log(cartItems);
 
@@ -335,6 +339,7 @@ router.get('/mycart', withAuth, async (req, res) => {
       cartItems,
       logged_in: req.session.logged_in,
       cartquantity: cartItems.length,
+      subtotal: sum,
     });
   } catch (err) {
     console.log(err);
