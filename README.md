@@ -26,6 +26,7 @@ I WANT a P2P online store dedicated to music,
 SO THAT I can buy new vinyls and rare editions no longer for sale;
 ```
 ====
+
 OR
 ====
 
