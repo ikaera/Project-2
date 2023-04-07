@@ -183,10 +183,10 @@
       </div>
     </div>
   </footer>
-
-{{#if logged_in}}
+{{!-- since we're doing logout as a direct href, I don't think we actually need to call the logout.js function, the logout button works and nothing has the associated tag --}}
+{{!-- {{#if logged_in}}
     <script src="/js/logout.js"></script>
-{{/if}}
+{{/if}} --}}
 </body>
 
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js'

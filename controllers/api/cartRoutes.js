@@ -33,6 +33,10 @@ router.delete('/:id', withAuth, async (req, res) => {
                 message: 'No cart item found with this ID!'
             });
             return;
+        } else {
+            res.json({
+                message: 'Cart item successfully deleted!'
+            });
         }
     } catch (err) {
         res.status(500).json(err);

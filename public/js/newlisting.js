@@ -8,11 +8,30 @@ const newListingHandler = async (event) => {
     const listingFormat = document.getElementById('listing-format').value.trim();
     const listingDesc = document.getElementById('listing-desc').value.trim();
     const listingDate = document.getElementById('listing-release').value.trim();
-    const listingCover = document.getElementById('listing-cover').value.trim();
     const listingCondition = document.getElementById('listing-condition').value.trim();
     const listingLabel = document.getElementById('listing-label').value.trim();
     const listingPrice = document.getElementById('listing-price').value.trim();
     const listingGenre = document.getElementById('listing-genre').value.trim();
+    const listingCover = document.getElementById('listing-cover').value.trim();
+    /* adjustments for multer */
+    // NEED WORK!!!! NOT WORKING!!!!
+    /* let listingCover = document.getElementById('listing-cover').value.trim();
+
+    if (listingCover = null) {
+        listingCover = document.getElementById('uploaded_file').value;
+    };
+    */
+
+    /* const listingCoverLink = document.getElementById('listing-cover').value.trim();
+    const listingCoverFile = document.getElementById('uploaded_file').value;
+
+    if (!listingCoverLink) {
+        const listingCoverUse = listingCoverFile;
+    } else {
+        const listingCoverUse = listingCoverLink;
+    };
+
+    const listingCover = listingCoverUse; */
 
     if (!listingArtist || !listingAlbum || !listingFormat || !listingDesc || !listingDate || !listingCover || !listingCondition || !listingLabel || !listingPrice || !listingGenre) {
         /* improving the formatting so that the status is shown as an h2 within a form-group div, following the submit button*/
