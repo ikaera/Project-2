@@ -30,7 +30,7 @@
             <br>
             <p>Description: {{disc.description}}</p>
           </td>
-          <td class="seller_info">Seller: {{user.name}}</td>
+          <td class="seller_info"><a href="/user/{{user.id}}">Seller: {{user.name}}</a></td>
           <td class="item_price">Price: ${{disc.price}}</td>
           <td class="item_format">Format: {{disc.format}}</td>
           <td class="save_button">
@@ -45,8 +45,8 @@
           </td>
         </tr>
 {{/each}}
-      <script src='./js/saveheart.js'></script>
-      <script src="./js/addtocart.js"></script>
+      <script src='/js/saveheart.js'></script>
+      <script src="/js/addtocart.js"></script>
       </tbody>
     </table>
       

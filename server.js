@@ -39,25 +39,19 @@ app.use(
   })
 );
 
+// this is for the visitor counter, not currently in use
 app.use((req, res, next) => {
   req.session.save(() => {
     req.session.counters = counters;
-    // req.session.loggedIn = true;
     next();
-    // res.status(200).json();
   });
 });
 
-// (async () => {
-//   const app = express();
-
-//   app.use(
-//     expressSession({ secret: 'secret', resave: false, saveUninitialized: true })
-//   );
-
-//   // app.get('/', (req, res, next) => res.json(counters));
-//   // app.listen(8080);
-// })();
+// this is for the multer functionality, needs work!
+/* app.post('/api/listings', upload.single('uploaded_file'), function (req, res) {
+  console.log(req.file, req.body);
+}); */
+// THIS WAS BRICKING THE NEW LISTING FUNCTION!!!!
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');

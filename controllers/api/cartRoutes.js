@@ -4,7 +4,7 @@ const router = require('express').Router();
 const { Cart } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const cartData = await Cart.create({
             cartitem_id: req.body.id,
@@ -33,6 +33,10 @@ router.delete('/:id', withAuth, async (req, res) => {
                 message: 'No cart item found with this ID!'
             });
             return;
+        } else {
+            res.json({
+                message: 'Cart item successfully deleted!'
+            });
         }
     } catch (err) {
         res.status(500).json(err);

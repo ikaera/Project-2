@@ -1,4 +1,4 @@
-const newFormHandler = async (event) => {
+/* const newFormHandler = async (event) => {
     event.preventDefault();
   
     const name = document.querySelector('#listing-name').value.trim();
@@ -20,9 +20,9 @@ const newFormHandler = async (event) => {
         alert('Failed to create listing');
       }
     }
-  };
+  }; */
   
-  const delButtonHandler = async (event) => {
+/*   const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
   
@@ -36,13 +36,13 @@ const newFormHandler = async (event) => {
         alert('Failed to delete listing');
       }
     }
-  };
+  }; */
   
-  document
+  /* document
     .querySelector('.new-listing-form')
-    .addEventListener('submit', newFormHandler);
+    .addEventListener('submit', newFormHandler); */
   
-  document
+/*   document
     .querySelector('.listing-list')
-    .addEventListener('click', delButtonHandler);
+    .addEventListener('click', delButtonHandler); */
   

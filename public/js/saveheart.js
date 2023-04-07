@@ -3,10 +3,6 @@ const favoriteBtn = document.querySelectorAll('.addFavoriteBtn');
 const favoriteFormHandler = async (event) => {
   event.preventDefault();
 
-  // const name = document.querySelector('#username-signup').value.trim();
-  // const email = document.querySelector('#email-signup').value.trim();
-  // const password = document.querySelector('#password-signup').value.trim();
-
   const id = event.target.dataset.id;
   console.log(id);
 
@@ -16,13 +12,9 @@ const favoriteFormHandler = async (event) => {
       body: JSON.stringify({ id }),
       headers: { 'Content-Type': 'application/json' },
     });
+
     const result = await response.json();
     console.log(result);
-    // if (response.ok) {
-    //   document.location.replace('/profile');
-    // } else {
-    //   alert(response.statusText);
-    // }
   }
 };
 
@@ -36,27 +28,27 @@ const deleteBtn = document.querySelectorAll('.favRemoveBtn');
 const deleteHandler = async (event) => {
   event.preventDefault();
 
-  // const favId = window.location.toString().split('/')[
-  //   window.location.toString().split('/').length - 1
-  // ];
   const id = event.target.dataset.id;
   console.log(id);
 
-  // if (id) {
   const response = await fetch(`/api/favorites/${id}`, {
     method: 'DELETE',
     body: JSON.stringify({ id }),
     headers: { 'Content-Type': 'application/json' },
   });
-  const result = await response.json();
-  console.log('RESULT', result);
-  // if (response.ok) {
-  //   document.location.replace('/profile');
-  // } else {
-  //   alert(response.statusText);
-  // }
+
+  // copied over from removefromcart so that any time an item is removed from cart, the page automatically refreshes
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    alert(response.statusText)
+  }
+
+  /* const result = await response.json();
+  console.log('RESULT', result); */
+
 };
-// };
+
 deleteBtn.forEach((btn) => {
   btn.addEventListener('click', deleteHandler);
 });

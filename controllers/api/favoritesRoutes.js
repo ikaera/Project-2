@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Favorites } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const favoritesData = await Favorites.create({
       favitem_id: req.body.id,
@@ -29,6 +29,10 @@ router.delete('/:id', withAuth, async (req, res) => {
     if (!favoritesData) {
       res.status(400).json({ message: 'No saved item found with this ID!' });
       return;
+    } else {
+      res.json({
+        message: 'Saved item successfully removed!'
+      });
     }
   } catch (err) {
     res.status(500).json(err);
