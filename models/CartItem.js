@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+/* const { Model, DataTypes } = require('sequelize');
 // why no third Sequelize here?! as opposed to FavItem?!
 const sequelize = require('../config/connection');
 
@@ -60,4 +60,4 @@ CartItem.init(
       }
 );
 
-module.exports = CartItem;
+module.exports = CartItem; */

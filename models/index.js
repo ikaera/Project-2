@@ -1,9 +1,9 @@
 const User = require('./User');
 const Listing = require('./Listing');
 const Cart = require('./Cart');
-const CartItem = require('./CartItem');
+/* const CartItem = require('./CartItem'); */
 const Favorites = require('./Favorites');
-const FavItem = require('./FavItem');
+/* const FavItem = require('./FavItem'); */
 
 User.hasMany(Listing, {
   foreignKey: 'user_id',
@@ -60,7 +60,8 @@ Cart.belongsTo(Listing, {
 // why are FavItem and CartItem NEVER USED ANYWHERE?
 // can we get rid of those entirely? or is there missing CODE?
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// removed the CartItem and FavItem models and exports entirely, site still functions the same
 
-module.exports = { User, Listing, Favorites, FavItem, Cart, CartItem };
+module.exports = { User, Listing, Favorites, /* FavItem, */ Cart/* , CartItem */ };
 
 // "how to get it so that when the "save to favorites" button is pressed on a listing, it creates a new Fav Item that clones specific parts of the Listing information and then goes into the '/myitems' page and stays there with cookies"

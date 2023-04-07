@@ -23,7 +23,7 @@ const upload = multer({
   limits : {fileSize : 5000000},
 });
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newListing = await Listing.create({
       ...req.body,
@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.post('/uploads', upload.single('uploaded_file'), async (req, res) => {
+router.post('/uploads', withAuth, upload.single('uploaded_file'), async (req, res) => {
   try {
     const newListing = await Listing.create({
       ...req.body,
