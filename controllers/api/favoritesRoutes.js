@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Favorites } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const favoritesData = await Favorites.create({
       favitem_id: req.body.id,
