@@ -1,79 +1,80 @@
 # Project-2 P2P Vinyl & CD Resale
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
+By Group: Will Work For Stock Grants
+​
+​
 ## Description
 =======
-Will Work For Stock Grants
-
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
-
+​
+We wanted to utilize our web development powers to create a usable marketplace for fans of music to buy and sell their physical media. In the age of the internet, music collection has made it easier to locate the music we all love. Access to every private collection has replaced the local record store. By creating a website for music collectors we have leveraged the power of peer 2 peer connection to distribute old and new albums for music lovers anywhere.
+​
+We've learned how to make the best use of git as a team to create a web application that utilizes backend, middleware, and front end to slowly build functionality piece by piece and page by page. We've learned how to troubleshoot API routes and how to utilize sequelize to setup a backend database of the kind of user-built product content you would find in such an online marketplace.
+​
+- [User Story](#user-story)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Short Demo Animation](#short-demo-animation)
+- [Links](#links)
+- [Credits](#credits)
+- [Technology Used](#technology-used)
+- [License](#license)
+​
 ### User Story
-
+​
+```md
 AS A user who owns albums on CD or vinyl,
 I WANT a P2P online store dedicated to music,
 SO THAT I can buy new vinyls and rare editions no longer for sale;
+```
+====
+OR
+====
+
+```md
 AS A user who owns albums on CD or vinyl,
 I WANT a P2P online store dedicated to music,
 SO THAT I can sell albums for a profit to other fans.
-
-<!-- A website where users can list physical music, such as CDs or Vinyl Records, for sale to other users. Users can browse the site by the user (to see all listings from a user), by category (to see all CD listings), etc., select items they're interested in to place into a shopping cart and purchase the items in their shopping cart.
-
-If we can add a search bar to bring up listings that match the search terms (so someone can search Parliament or Funkadelic and get a list of CDs or Vinyl available for purchase from those artists) that would be awesome
-
-We will need to add some kind of selection or add-to-cart button on every listing when generating it through the handlebar -->
-
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
-
+```
+​
 ## Installation
-
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
-
-### Acceptance Criteria
-
+​
+Simply go to the Heroku webpage provided below.
+You will need to sign up with a new account in order to access the website beyond the homepage.
+​
 ## Usage
-
-<!-- Provide instructions and examples for use. Include screenshots as needed.
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ``` -->
+​
+This is a website where users can list physical music, such as CDs, cassettes, or Vinyl Records for sale to other users. Users can browse the site by the user (to see all listings from a user), by category (to see all CD listings), etc., select items they're interested in to place into a shopping cart and purchase the items in their shopping cart.
+​
+You can search for any category in the search bar, provide your own listings on your user page, save items for later and even bring them to the cart page to purchase.
+​
+Listings can be deleted, items in the favorites page can be removed or added to the shopping cart directly and the shopping cart shows a subtotal sum of all item prices within, which updates if any items are removed from the shopping cart.
+​
 ### Short Demo Animation
-![Deployed Website](./assets/images/)
 
+Deployed Homepage:
+![Homepage](/public/img/discexchange%20homepage.png)
+
+Favorite Items List:
+![Favorites](/public/img/discexchange%20favorited%20items.png)
+
+Shopping Cart With Subtotal:
+![Shopping Cart](/public/img/discexchange%20cart%20with%20subtotal.png)
+
+Profile When Logged In:
+![User Profile](/public/img/discexchange%20user%20profile%20when%20logged%20in.png)
+​
 ### Links
-
+​
 • Deployed Application URL: 
-    - ...
+    - Heroku: https://serene-forest-09402.herokuapp.com/
 • Repository URL: https://github.com/ikaera/Project-2
-
+​
 ## Credits
-
-<!-- List your collaborators, if any, with links to their GitHub profiles. -->
-
+​
 - Jack Mabie (https://github.com/jmabie94)
 - Terry Sa (https://github.com/apostlex11)
 - Nate Johnson (https://github.com/codelearning2021)
 - Irakli Eradze (https://github.com/ikaera)
-
-<!-- If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well. -->
-
+​
 ## Technology Used
     - HTML and CSS
     - JavaScript,
@@ -85,11 +86,13 @@ If you followed tutorials, include links to those here as well. -->
     - express-session and connect-session-sequelize packages to add authentication 
     - bootstrap
     - font-awesome
-    - Express-Visitor-Counter
-    - Multer (a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency).
-
+    - Express-Visitor-Counter (*future development, not currently implemented*)
+    - Multer (a node.js middleware for uploading images).
+​
 ## License
-
+​
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+​
 MIT License
 Copyright (c) [2023] [The Five Loopers]
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -107,26 +110,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
+​
 ---
-
-<!-- 🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
-## Features
-
-If your project has a lot of features, list them here.
-
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
-## Tests
-
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
- -->
