@@ -76,19 +76,29 @@ Screenshot:
 
 If you followed tutorials, include links to those here as well. -->
 
-## Technology Used
-    - HTML and CSS
-    - JavaScript,
+## Technology Used    
+    - JavaScript
     - Node.js
-    - Handlebars.js => express-handlebars package
+    - Express.js & Handlebars.js
     - MySQL2 and Sequelize packages
-    - dotenv package to use environment variables
-    - bcrypt package to hash passwords
-    - express-session and connect-session-sequelize packages to add authentication 
-    - bootstrap
-    - font-awesome
-    - Express-Visitor-Counter
-    - Multer (a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency).
+    - Dotenv
+    - Bcrypt
+    - Express-Session
+    - HTML and CSS 
+    - Bootstrap & Font-Awesome    
+    - Multer 
+    - Express-Visitor-Counter (for future dev)
+
+### FUTURE DEVELOPMENT
+
+- We were not able to properly utilize the Express-Visitor-Counter or Multer npm packages in time, but we have ideas for how to use them.
+
+
+- We have a shopping cart that items can be added to, but we did not find a way to generate subtotal and continue to a checkout page.
+
+
+- We still want to implement a functional search bar and make it so most Artist Titles, Names, Sellers and the like are hyperlinked to display similar listings.
+
 
 ## License
 
