@@ -5,10 +5,6 @@ const path = require('path');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const expressVisitorCounter = require('express-visitor-counter');
-/* adding multer stuff */
-// these shouldn't cause any problems as is, they're just there for when we need 'em!
-const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -52,13 +48,10 @@ app.use((req, res, next) => {
 });
 
 // this is for the multer functionality, needs work!
-// also probably needs to go into the homeRoutes / apiRoutes
 /* app.post('/api/listings', upload.single('uploaded_file'), function (req, res) {
   console.log(req.file, req.body);
 }); */
 // THIS WAS BRICKING THE NEW LISTING FUNCTION!!!!
-// I THINK THE upload.single('uploaded_file') logic needs to be contained within the SAME POST ROUTE 
-// as the rest of the new listing information, so that it's all included in the same post!
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
