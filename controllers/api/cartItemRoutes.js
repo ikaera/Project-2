@@ -4,9 +4,9 @@
 // similarly with favItemRoutes, this doesn't seem to be doing anything
 // going to consult my tutor tomorrow
 
-const router = require('express').Router();
+/* const router = require('express').Router();
 const Listing = require('../../models/Listing');
 const { Cart } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
-module.exports = router;
+module.exports = router; */
