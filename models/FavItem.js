@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+/* const { Model, DataTypes } = require('sequelize');
 // const Sequelize = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -61,4 +61,4 @@ FavItem.init(
   }
 );
 
-module.exports = FavItem;
+module.exports = FavItem; */
