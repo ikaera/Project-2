@@ -3,7 +3,7 @@ By Group: Will Work For Stock Grants
 ​
 ​
 ## Description
-=======
+
 ​
 We wanted to utilize our web development powers to create a usable marketplace for fans of music to buy and sell their physical media. In the age of the internet, music collection has made it easier to locate the music we all love. Access to every private collection has replaced the local record store. By creating a website for music collectors we have leveraged the power of peer 2 peer connection to distribute old and new albums for music lovers anywhere.
 ​
@@ -24,10 +24,9 @@ AS A user who owns albums on CD or vinyl,
 I WANT a P2P online store dedicated to music,
 SO THAT I can buy new vinyls and rare editions no longer for sale;
 ```
-====
 
-OR
-====
+### OR
+
 
 ```md
 AS A user who owns albums on CD or vinyl,
