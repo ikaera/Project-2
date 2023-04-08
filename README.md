@@ -3,8 +3,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-=======
-Will Work For Stock Grants
 
 <!-- Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
 
@@ -15,7 +13,8 @@ Will Work For Stock Grants
 
 ### User Story
 
-AS A user who owns albums on CD or vinyl,
+
+AS A user,
 I WANT a P2P online store dedicated to music,
 SO THAT I can buy new vinyls and rare editions no longer for sale;
 AS A user who owns albums on CD or vinyl,
@@ -41,7 +40,25 @@ We will need to add some kind of selection or add-to-cart button on every listin
 
 <!-- What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running. -->
 
+
 ### Acceptance Criteria
+
+GIVEN P2P online web aplication,
+WHEN I visit the site for the first time,
+THEN I am presented with the homepage, which includes navigation links for the homepage, Vinyl, CD, Cassettes and Sell, and the option to log in or sign up.
+WHEN I click on the homepage option
+THEN I am taken to the homepage
+WHEN I click on any other links in the navigation
+THEN I am prompted to either sign up or sign in
+WHEN I choose to sign up. 
+THEN I am prompted to create a username and password
+WHEN I click on the sign-up button
+THEN my user credentials are saved and I am logged into the site
+WHEN I revisit the site at a later time and choose to sign in
+THEN I am prompted to enter my username and password
+WHEN I am signed in to the site
+THEN I see navigation links  and the option to log out. 
+
 
 ## Usage
 
@@ -53,8 +70,8 @@ Screenshot:
     
 ![alt text](./public/P2PVinylCD.png)
     
-### Short Demo Animation
-![Deployed Website](./assets/images/)
+<!-- ### Short Demo Animation
+![Deployed Website](./assets/images/) -->
 
 ### Links
 
